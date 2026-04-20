@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CaptureStamp</title>
+<meta name="description" content="Webcam capture with live timestamp and geolocation">
+<meta name="theme-color" content="#00e5ff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d0d'/><text x='16' y='22' font-size='18' text-anchor='middle'>📸</text></svg>">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0d0d;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 100px;
+  }
+
+  /* ── Header ── */
+  .header { text-align: center; margin-bottom: 20px; width: 100%; max-width: 640px; }
+  .header-row { display: flex; align-items: center; justify-content: center; gap: 8px; }
+  h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.05em; color: #00e5ff; }
+  .install-btn {
+    background: #1a1a2e; border: 1px solid #00e5ff; color: #00e5ff;
+    font-size: 0.7rem; padding: 4px 10px; border-radius: 20px;
+    cursor: pointer; display: none; font-weight: 600; transition: all 0.2s;
+  }
+  .install-btn:hover { background: #00e5ff22; }
+  .install-btn.show { display: inline-block; }
+  .subtitle { font-size: 0.72rem; color: #555; margin-top: 2px; }
+
+  /* ── Camera ── */
+  .cam-wrapper {
+    position: relative; width: 100%; max-width: 640px;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.15);
+  }
+  #preview { width: 100%; display: block; background: #1a1a1a; }
+  .overlay {
+    position: absolute; bottom: 14px; right: 14px;
+    text-align: right; pointer-events: none;
+    font-size: 0.75rem; line-height: 1.7;
+  }
+  .overlay-row { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+  .overlay-icon { font-size: 0.9rem; flex-shrink: 0; }
+  .overlay-text {
+    color: #ffffff; font-family: 'Courier New', monospace; font-size: 0.72rem;
+    -webkit-text-stroke: 0.5px rgba(0,0,0,0.7);
+    text-shadow:
+      -0.5px -0.5px 0 rgba(0,0,0,0.7),
+       0.5px -0.5px 0 rgba(0,0,0,0.7),
+      -0.5px  0.5px 0 rgba(0,0,0,0.7),
+       0.5px  0.5px 0 rgba(0,0,0,0.7);
+  }
+  .overlay-text.unknown { color: #ff6b6b; -webkit-text-stroke: none; text-shadow: none; }
+  .overlay .address { display: block; font-size: 0.65rem; line-height: 1.5; }
+
+  /* ── Controls ── */
+  .controls {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 14px; margin-top: 20px; width: 100%; max-width: 640px;
+  }
+  .btn-capture {
+    background: #00e5ff; color: #000; border: none;
+    padding: 15px 52px; border-radius: 50px; font-size: 1rem;
+    font-weight: 700; cursor: pointer; transition: all 0.2s;
+    letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-capture:hover:not(:disabled) { background: #00c8d8; transform: scale(1.02); }
+  .btn-capture:active:not(:disabled) { transform: scale(0.97); }
+  .btn-capture:disabled { background: #2a2a2a; color: #555; cursor: not-allowed; }
+
+  .toggles { display: flex; gap: 24px; font-size: 0.8rem; color: #777; }
+  .toggle-row { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+  .toggle-row input { cursor: pointer; accent-color: #00e5ff; }
+
+  .status { font-size: 0.75rem; color: #444; text-align: center; min-height: 20px; transition: color 0.3s; }
+  .status.ok  { color: #00e5ff; }
+  .status.err { color: #ff6b6b; }
+
+  /* ── Gallery ── */
+  .status { font-size: 0.75rem; color: #444; text-align: center; min-height: 20px; transition: color 0.3s; }
+  .status.ok  { color: #00e5ff; }
+  .status.err { color: #ff6b6b; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-row">
+    <h1>📸 CaptureStamp</h1>
+    <button class="install-btn" id="installBtn">⬇️ Install</button>
+  </div>
+  <p class="subtitle">Webcam · Timestamp · Geolocation · PWA</p>
+</div>
+
+<div class="cam-wrapper">
+  <video id="preview" autoplay playsinline muted></video>
+  <div class="overlay">
+    <div class="overlay-row">
+      <span class="overlay-text" id="timeDisplay">—</span>
+      <span class="overlay-icon">🕒</span>
+    </div>
+    <div class="overlay-row">
+      <span class="overlay-text" id="locDisplay">Acquiring location…</span>
+      <span class="overlay-icon">📍</span>
+    </div>
+    <span class="overlay-text address" id="addrDisplay"></span>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="btn-capture" id="captureBtn" disabled>
+    <span>📷</span> CAPTURE
+  </button>
+
+  <div class="toggles">
+    <label class="toggle-row">
+      <input type="checkbox" id="toggleLoc" checked> Include Location
+    </label>
+    <label class="toggle-row">
+      <input type="checkbox" id="toggleTime" checked> Include Timestamp
+    </label>
+  </div>
+
+  <div class="status" id="status">Initializing camera…</div>
+</div>
+
+
+
+
+
+<script>
+// ─── App State ─────────────────────────────────────────────────
+let stream       = null;
+let geoWatchId   = null;
+let geo          = null;          // { lat, lng, acc }
+let address      = '';            // reverse-geocoded address
+let geoTimer     = null;          // debounce timer for reverse geocode
+let liveTime     = '—';
+let captureCount = 0;
+let installPrompt = null;
+
+// ─── Elements ──────────────────────────────────────────────────
+const video      = document.getElementById('preview');
+const captureBtn = document.getElementById('captureBtn');
+const statusEl   = document.getElementById('status');
+const locEl      = document.getElementById('locDisplay');
+const timeEl     = document.getElementById('timeDisplay');
+const addrEl     = document.getElementById('addrDisplay');
+const toggleLoc  = document.getElementById('toggleLoc');
+const toggleTime = document.getElementById('toggleTime');
+const installBtn = document.getElementById('installBtn');
+
+// ─── Camera ─────────────────────────────────────────────────────
+async function initCamera() {
+  setStatus('Requesting camera access…', '');
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: false
+    });
+    video.srcObject = stream;
+    await video.play();
+    captureBtn.disabled = false;
+    setStatus('Camera ready', 'ok');
+  } catch (err) {
+    console.error('[Camera]', err);
+    setStatus('Camera access denied — check browser permissions', 'err');
+  }
+}
+
+// ─── Geolocation + Reverse Geocoding ───────────────────────────
+async function reverseGeocode(lat, lng) {
+  try {
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&addressdetails=1`,
+      { headers: { 'Accept-Language': 'en' } }
+    );
+    if (!res.ok) throw new Error('Nominatim error');
+    const data = await res.json();
+    const addr = data.address || {};
+    const parts = [
+      addr.road       || addr.pause || addr.building,
+      addr.neighbourhood || addr.suburb,
+      addr.village    || addr.town   || addr.city || addr.city_district,
+      addr.county,
+      addr.state,
+      addr.postcode,
+      addr.country,
+    ].filter(Boolean);
+    return parts.slice(0, 6).join('\n');
+  } catch (_) {
+    return '';
+  }
+}
+
+function initGeo() {
+  if (!navigator.geolocation) {
+    locEl.textContent = 'Unavailable';
+    locEl.classList.add('unknown');
+    return;
+  }
+
+  geoWatchId = navigator.geolocation.watchPosition(
+    async (pos) => {
+      geo = {
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude,
+        acc: pos.coords.accuracy
+      };
+
+      if (toggleLoc.checked) {
+        locEl.textContent = address ? address.split('\n')[0] : '—';
+        locEl.classList.remove('unknown');
+      } else {
+        locEl.textContent = '—';
+      }
+
+      // Immediate reverse geocode on first fix
+      if (!address) {
+        address = await reverseGeocode(geo.lat, geo.lng);
+        if (toggleLoc.checked) {
+          locEl.textContent = address.split('\n')[0];
+          addrEl.textContent = address;
+          locEl.classList.remove('unknown');
+        }
+      }
+
+      // Debounced refresh (for subsequent position updates)
+      clearTimeout(geoTimer);
+      geoTimer = setTimeout(async () => {
+        const fresh = await reverseGeocode(geo.lat, geo.lng);
+        if (fresh) { address = fresh; addrEl.textContent = address; }
+      }, 5000);
+    },
+    () => {
+      locEl.textContent = 'Location denied';
+      locEl.classList.add('unknown');
+    },
+    { enableHighAccuracy: true, timeout: 10000, maximumAge: 5000 }
+  );
+}
+
+// ─── Live Clock (WIB = UTC+7) ─────────────────────────────────
+const MONTH_EN = ['January','February','March','April','May','June',
+                  'July','August','September','October','November','December'];
+
+function formatWIB(date) {
+  const offset = 7 * 60; // WIB is UTC+7
+  const utc    = date.getTime() + date.getTimezoneOffset() * 60000;
+  const wib    = new Date(utc + offset * 60000);
+  const pad    = (n) => String(n).padStart(2, '0');
+  const day    = wib.getDate();
+  const month  = MONTH_EN[wib.getMonth()];
+  const year   = wib.getFullYear();
+  return `${day} ${month} ${year} ` +
+         `${pad(wib.getHours())}:${pad(wib.getMinutes())}:${pad(wib.getSeconds())} WIB`;
+}
+
+function tickClock() {
+  liveTime = formatWIB(new Date());
+  timeEl.textContent = toggleTime.checked ? liveTime : '—';
+  requestAnimationFrame(tickClock);
+}
+
+// ─── PWA Install ────────────────────────────────────────────────
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  installPrompt = e;
+  installBtn.classList.add('show');
+});
+
+installBtn.addEventListener('click', async () => {
+  if (!installPrompt) return;
+  const res = await installPrompt.prompt();
+  installPrompt = null;
+  installBtn.classList.remove('show');
+  console.log('[Install]', res);
+});
+
+// ─── Capture ────────────────────────────────────────────────────
+async function capture() {
+  if (!stream) return;
+
+  const now = new Date();
+  const ts  = formatWIB(now).replace(/[: ]/g, '-');
+  const w   = video.videoWidth  || 640;
+  const h   = video.videoHeight || 480;
+  const canvas = document.createElement('canvas');
+  canvas.width  = w;
+  canvas.height = h;
+  const ctx = canvas.getContext('2d');
+
+  ctx.drawImage(video, 0, 0, w, h);
+
+  // ── Build overlay lines (bottom-right, right-aligned) ──
+  const lines = [];
+  if (toggleTime.checked) lines.push(liveTime);
+  if (toggleLoc.checked) {
+    if (address) {
+      lines.push(...address.split('\n').filter(Boolean));
+    } else if (geo) {
+      lines.push(`${geo.lat.toFixed(6)}, ${geo.lng.toFixed(6)}`);
+    }
+  }
+
+  if (lines.length > 0) {
+    const fontSize = Math.max(11, Math.floor(w / 72));
+    const lineH    = fontSize * 1.45;
+    const padX     = 16;
+    const padY     = 10;
+    const padding  = 8;
+
+    ctx.font = `600 ${fontSize}px "Courier New", monospace`;
+
+    const maxLineW = Math.max(...lines.map((l) => ctx.measureText(l).width));
+    const boxW     = maxLineW + padX * 2;
+    const boxH     = lines.length * lineH + padY * 2 - padding;
+    const bx       = w - boxW - 14;
+    const by       = h - boxH - 14;
+
+    ctx.fillStyle = 'rgba(0,0,0,0.0)';
+    ctx.fillRect(bx, by, boxW, boxH);
+
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'right';
+    lines.forEach((line, i) => {
+      const tx = w - 14 - padX;
+      const ty = by + padY + i * lineH;
+
+      ctx.font = `600 ${fontSize}px "Courier New", monospace`;
+      ctx.strokeStyle = 'rgba(0,0,0,0.75)';
+      ctx.lineWidth   = fontSize * 0.12;
+      ctx.lineJoin    = 'round';
+      ctx.strokeText(line, tx, ty);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(line, tx, ty);
+    });
+  }
+
+  const metadata = {
+    timestamp: now.toISOString(),
+    lat: geo?.lat ?? null,
+    lng: geo?.lng ?? null,
+    accuracy: geo?.acc ?? null,
+    address: address || null,
+    includeLocation: toggleLoc.checked,
+    includeTimestamp: toggleTime.checked
+  };
+
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+
+    const filename = `capturestamp_${ts}.png`;
+
+    // ── Download PNG ──
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+captureCount++;
+    setStatus(`Saved capture #${captureCount}`, 'ok');
+  }, 'image/png');
+}
+
+// ─── Status helper ─────────────────────────────────────────────
+function setStatus(msg, cls = '') {
+  statusEl.textContent = msg;
+  statusEl.className = 'status' + (cls ? ' ' + cls : '');
+}
+
+// ─── Events ─────────────────────────────────────────────────────
+captureBtn.addEventListener('click', capture);
+toggleLoc.addEventListener('change', () => {
+  if (toggleLoc.checked) {
+    locEl.textContent  = address ? address.split('\n')[0] : '—';
+    addrEl.textContent = address;
+  } else {
+    locEl.textContent  = '—';
+    addrEl.textContent = '';
+  }
+});
+toggleTime.addEventListener('change', () => {
+  timeEl.textContent = toggleTime.checked ? liveTime : '—';
+});
+
+// ─── Boot ───────────────────────────────────────────────────────
+initCamera();
+initGeo();
+tickClock();
+</script>
+</body>
+</html>
