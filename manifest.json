@@ -1,27 +1,16 @@
 {
   "name": "CaptureStamp",
   "short_name": "CaptureStamp",
-  "description": "Webcam capture with timestamp and geolocation",
-  "start_url": "/capturestamp.html",
+  "description": "Webcam capture with live timestamp and geolocation",
+  "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#0d0d0d",
-  "theme_color": "#00e5ff",
+  "background_color": "#141210",
+  "theme_color": "#E09A3D",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='32' fill='%230d0d0d'/><text x='96' y='130' font-size='110' text-anchor='middle'>📸</text></svg>",
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='24' fill='%23141210'/><rect x='24' y='56' width='144' height='96' rx='8' fill='none' stroke='%23E09A3D' stroke-width='8'/><circle cx='96' cy='104' r='24' fill='none' stroke='%23E09A3D' stroke-width='8'/><circle cx='140' cy='76' r='8' fill='%23E09A3D'/></svg>",
       "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='80' fill='%230d0d0d'/><text x='256' y='340' font-size='280' text-anchor='middle'>📸</text></svg>",
-      "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/svg+xml"
     }
-  ],
-  "categories": ["photo", "utilities"],
-  "lang": "en",
-  "dir": "ltr"
+  ]
 }

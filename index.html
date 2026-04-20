@@ -5,148 +5,382 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>CaptureStamp</title>
 <meta name="description" content="Webcam capture with live timestamp and geolocation">
-<meta name="theme-color" content="#00e5ff">
+<meta name="theme-color" content="#141210">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d0d'/><text x='16' y='22' font-size='18' text-anchor='middle'>📸</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23141210'/><circle cx='16' cy='16' r='7' fill='none' stroke='%23E09A3D' stroke-width='2'/><circle cx='16' cy='16' r='3' fill='%23E09A3D'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    background: #0d0d0d;
-    color: #e0e0e0;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    padding-bottom: 100px;
-  }
+/* ── Palette ── */
+:root {
+  --bg:      #141210;
+  --bg2:     #1C1916;
+  --bg3:     #242120;
+  --cream:   #F5E6D3;
+  --cream2:  #C4B49A;
+  --amber:   #E09A3D;
+  --amber2:  #F0B84A;
+  --red:     #E07070;
+  --shadow:  rgba(0,0,0,0.6);
+}
 
-  /* ── Header ── */
-  .header { text-align: center; margin-bottom: 20px; width: 100%; max-width: 640px; }
-  .header-row { display: flex; align-items: center; justify-content: center; gap: 8px; }
-  h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.05em; color: #00e5ff; }
-  .install-btn {
-    background: #1a1a2e; border: 1px solid #00e5ff; color: #00e5ff;
-    font-size: 0.7rem; padding: 4px 10px; border-radius: 20px;
-    cursor: pointer; display: none; font-weight: 600; transition: all 0.2s;
-  }
-  .install-btn:hover { background: #00e5ff22; }
-  .install-btn.show { display: inline-block; }
-  .subtitle { font-size: 0.72rem; color: #555; margin-top: 2px; }
+/* ── Grain texture ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
 
-  /* ── Camera ── */
-  .cam-wrapper {
-    position: relative; width: 100%; max-width: 640px;
-    border-radius: 12px; overflow: hidden;
-    box-shadow: 0 0 40px rgba(0, 229, 255, 0.15);
-  }
-  #preview { width: 100%; display: block; background: #1a1a1a; }
-  .overlay {
-    position: absolute; bottom: 14px; right: 14px;
-    text-align: right; pointer-events: none;
-    font-size: 0.75rem; line-height: 1.7;
-  }
-  .overlay-row { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
-  .overlay-icon { font-size: 0.9rem; flex-shrink: 0; }
-  .overlay-text {
-    color: #ffffff; font-family: 'Courier New', monospace; font-size: 0.72rem;
-    -webkit-text-stroke: 0.5px rgba(0,0,0,0.7);
-    text-shadow:
-      -0.5px -0.5px 0 rgba(0,0,0,0.7),
-       0.5px -0.5px 0 rgba(0,0,0,0.7),
-      -0.5px  0.5px 0 rgba(0,0,0,0.7),
-       0.5px  0.5px 0 rgba(0,0,0,0.7);
-  }
-  .overlay-text.unknown { color: #ff6b6b; -webkit-text-stroke: none; text-shadow: none; }
-  .overlay .address { display: block; font-size: 0.65rem; line-height: 1.5; }
+/* ── Entrance keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
 
-  /* ── Controls ── */
-  .controls {
-    display: flex; flex-direction: column; align-items: center;
-    gap: 14px; margin-top: 20px; width: 100%; max-width: 640px;
-  }
-  .btn-capture {
-    background: #00e5ff; color: #000; border: none;
-    padding: 15px 52px; border-radius: 50px; font-size: 1rem;
-    font-weight: 700; cursor: pointer; transition: all 0.2s;
-    letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .btn-capture:hover:not(:disabled) { background: #00c8d8; transform: scale(1.02); }
-  .btn-capture:active:not(:disabled) { transform: scale(0.97); }
-  .btn-capture:disabled { background: #2a2a2a; color: #555; cursor: not-allowed; }
+/* ── Base ── */
+html { scroll-behavior: smooth; }
 
-  .toggles { display: flex; gap: 24px; font-size: 0.8rem; color: #777; }
-  .toggle-row { display: flex; align-items: center; gap: 6px; cursor: pointer; }
-  .toggle-row input { cursor: pointer; accent-color: #00e5ff; }
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'Outfit', system-ui, sans-serif;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 16px 100px;
+  gap: 0;
+}
 
-  .status { font-size: 0.75rem; color: #444; text-align: center; min-height: 20px; transition: color 0.3s; }
-  .status.ok  { color: #00e5ff; }
-  .status.err { color: #ff6b6b; }
+/* ── Header ── */
+.header {
+  text-align: center;
+  width: 100%;
+  max-width: 580px;
+  animation: fadeUp 0.6s ease both;
+}
+.header__wordmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.header__logo {
+  width: 28px;
+  height: 28px;
+  color: var(--amber);
+  flex-shrink: 0;
+}
+.header__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+.install-btn {
+  background: transparent;
+  border: 1.5px solid var(--amber);
+  color: var(--amber);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: none;
+}
+.install-btn.show { display: inline-block; }
+.install-btn:hover { background: var(--amber); color: var(--bg); }
 
-  /* ── Gallery ── */
-  .status { font-size: 0.75rem; color: #444; text-align: center; min-height: 20px; transition: color 0.3s; }
-  .status.ok  { color: #00e5ff; }
-  .status.err { color: #ff6b6b; }
+.header__sub {
+  font-size: 0.72rem;
+  color: var(--cream2);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Viewport ── */
+.viewport {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin-top: 24px;
+  border-radius: 10px;
+  overflow: hidden;
+  /* Film frame effect */
+  box-shadow:
+    0 0 0 1px rgba(224,154,61,0.15),
+    0 8px 48px rgba(0,0,0,0.7),
+    inset 0 0 60px rgba(0,0,0,0.3);
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+
+#preview {
+  width: 100%;
+  display: block;
+  background: var(--bg2);
+  /* 4:3 crop if wider */
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+/* Vignette */
+.viewport::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+
+/* ── Overlay ── */
+.overlay {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.overlay-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.overlay-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.overlay-icon--pulse { animation: pulse-dot 2s ease infinite; }
+
+.overlay-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(245,230,211,0.95);
+  line-height: 1.55;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+.overlay-text small {
+  font-size: 0.58rem;
+  opacity: 0.75;
+}
+.overlay-text .date { color: rgba(245,230,211,0.65); }
+
+.loc-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  flex-shrink: 0;
+  margin-top: 4px;
+  box-shadow: 0 0 6px var(--amber);
+}
+.loc-dot.fetching { animation: pulse-dot 1.2s ease infinite; }
+.loc-dot.denied  { background: var(--red); box-shadow: none; animation: none; }
+
+.addr-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 2px;
+}
+.addr-block .addr-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: rgba(245,230,211,0.85);
+  line-height: 1.5;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+/* ── Controls ── */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-top: 22px;
+  width: 100%;
+  max-width: 580px;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.capture-btn {
+  position: relative;
+  background: var(--amber);
+  color: var(--bg);
+  border: none;
+  padding: 16px 56px;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.12s, box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+.capture-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.15s;
+}
+.capture-btn:hover:not(:disabled) {
+  background: var(--amber2);
+  box-shadow: 0 0 28px rgba(224,154,61,0.45);
+  transform: scale(1.02);
+}
+.capture-btn:active:not(:disabled) {
+  transform: scale(0.95);
+  box-shadow: 0 0 12px rgba(224,154,61,0.3);
+}
+.capture-btn:disabled {
+  background: var(--bg3);
+  color: var(--cream2);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.capture-btn__icon { font-size: 1.1rem; }
+
+.toggles {
+  display: flex;
+  gap: 28px;
+  font-size: 0.8rem;
+  color: var(--cream2);
+}
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.toggle-row input { accent-color: var(--amber); cursor: pointer; width: 15px; height: 15px; }
+.toggle-row span  { font-family: 'Outfit', sans-serif; font-weight: 500; }
+
+/* ── Status ── */
+.status {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--cream2);
+  text-align: center;
+  min-height: 22px;
+  transition: color 0.4s;
+  animation: fadeIn 0.4s 0.4s ease both;
+}
+.status.ok  { color: var(--amber); }
+.status.err { color: var(--red); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
+
+/* ── Selection ── */
+::selection { background: var(--amber); color: var(--bg); }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-row">
-    <h1>📸 CaptureStamp</h1>
-    <button class="install-btn" id="installBtn">⬇️ Install</button>
+<header class="header">
+  <div class="header__wordmark">
+    <svg class="header__logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="6" width="20" height="14" rx="2"/>
+      <circle cx="12" cy="13" r="4"/>
+      <circle cx="17.5" cy="8.5" r="1" fill="currentColor" stroke="none"/>
+    </svg>
+    <span class="header__title">CaptureStamp</span>
+    <button class="install-btn" id="installBtn">Install</button>
   </div>
-  <p class="subtitle">Webcam · Timestamp · Geolocation · PWA</p>
-</div>
+  <p class="header__sub">Webcam &middot; Timestamp &middot; Geolocation</p>
+</header>
 
-<div class="cam-wrapper">
+<div class="viewport">
   <video id="preview" autoplay playsinline muted></video>
   <div class="overlay">
     <div class="overlay-row">
-      <span class="overlay-text" id="timeDisplay">—</span>
-      <span class="overlay-icon">🕒</span>
+      <svg class="overlay-icon" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M8 4.5V8l2.5 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <span class="overlay-text" id="timeDisplay"><span class="date">— —</span></span>
     </div>
     <div class="overlay-row">
-      <span class="overlay-text" id="locDisplay">Acquiring location…</span>
-      <span class="overlay-icon">📍</span>
+      <div class="loc-dot fetching" id="locDot"></div>
+      <span class="overlay-text" id="locDisplay">Acquiring…</span>
     </div>
-    <span class="overlay-text address" id="addrDisplay"></span>
+    <div class="addr-block" id="addrBlock" style="display:none">
+      <svg class="overlay-icon" viewBox="0 0 16 16" fill="none" style="margin-top:2px">
+        <path d="M8 2C5.8 2 4 3.8 4 6c0 3.5 4 8 4 8s4-4.5 4-8c0-2.2-1.8-4-4-4z" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      <span class="addr-text" id="addrDisplay"></span>
+    </div>
   </div>
 </div>
 
 <div class="controls">
-  <button class="btn-capture" id="captureBtn" disabled>
-    <span>📷</span> CAPTURE
+  <button class="capture-btn" id="captureBtn" disabled>
+    <span class="capture-btn__icon">&#9673;</span>
+    CAPTURE
   </button>
 
   <div class="toggles">
     <label class="toggle-row">
-      <input type="checkbox" id="toggleLoc" checked> Include Location
+      <input type="checkbox" id="toggleLoc" checked>
+      <span>Location</span>
     </label>
     <label class="toggle-row">
-      <input type="checkbox" id="toggleTime" checked> Include Timestamp
+      <input type="checkbox" id="toggleTime" checked>
+      <span>Timestamp</span>
     </label>
   </div>
 
-  <div class="status" id="status">Initializing camera…</div>
+  <div class="status" id="status">Initializing camera&hellip;</div>
 </div>
 
 
-
-
-
 <script>
-// ─── App State ─────────────────────────────────────────────────
+// ─── State ──────────────────────────────────────────────────────
 let stream       = null;
 let geoWatchId   = null;
-let geo          = null;          // { lat, lng, acc }
-let address      = '';            // reverse-geocoded address
-let geoTimer     = null;          // debounce timer for reverse geocode
+let geo          = null;
+let address      = '';
+let geoTimer     = null;
 let liveTime     = '—';
 let captureCount = 0;
 let installPrompt = null;
@@ -156,8 +390,10 @@ const video      = document.getElementById('preview');
 const captureBtn = document.getElementById('captureBtn');
 const statusEl   = document.getElementById('status');
 const locEl      = document.getElementById('locDisplay');
-const timeEl     = document.getElementById('timeDisplay');
+const addrBlock  = document.getElementById('addrBlock');
 const addrEl     = document.getElementById('addrDisplay');
+const timeEl     = document.getElementById('timeDisplay');
+const locDot     = document.getElementById('locDot');
 const toggleLoc  = document.getElementById('toggleLoc');
 const toggleTime = document.getElementById('toggleTime');
 const installBtn = document.getElementById('installBtn');
@@ -166,10 +402,7 @@ const installBtn = document.getElementById('installBtn');
 async function initCamera() {
   setStatus('Requesting camera access…', '');
   try {
-    stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
-      audio: false
-    });
+    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
     video.srcObject = stream;
     await video.play();
     captureBtn.disabled = false;
@@ -180,7 +413,7 @@ async function initCamera() {
   }
 }
 
-// ─── Geolocation + Reverse Geocoding ───────────────────────────
+// ─── Geolocation ───────────────────────────────────────────────
 async function reverseGeocode(lat, lng) {
   try {
     const res = await fetch(
@@ -191,9 +424,9 @@ async function reverseGeocode(lat, lng) {
     const data = await res.json();
     const addr = data.address || {};
     const parts = [
-      addr.road       || addr.pause || addr.building,
+      addr.road        || addr.pause || addr.building,
       addr.neighbourhood || addr.suburb,
-      addr.village    || addr.town   || addr.city || addr.city_district,
+      addr.village     || addr.town   || addr.city || addr.city_district,
       addr.county,
       addr.state,
       addr.postcode,
@@ -208,45 +441,41 @@ async function reverseGeocode(lat, lng) {
 function initGeo() {
   if (!navigator.geolocation) {
     locEl.textContent = 'Unavailable';
-    locEl.classList.add('unknown');
+    locDot.className = 'loc-dot denied';
     return;
   }
 
   geoWatchId = navigator.geolocation.watchPosition(
     async (pos) => {
-      geo = {
-        lat: pos.coords.latitude,
-        lng: pos.coords.longitude,
-        acc: pos.coords.accuracy
-      };
+      geo = { lat: pos.coords.latitude, lng: pos.coords.longitude, acc: pos.coords.accuracy };
 
       if (toggleLoc.checked) {
         locEl.textContent = address ? address.split('\n')[0] : '—';
-        locEl.classList.remove('unknown');
-      } else {
-        locEl.textContent = '—';
+        locDot.className = 'loc-dot';
       }
 
-      // Immediate reverse geocode on first fix
       if (!address) {
         address = await reverseGeocode(geo.lat, geo.lng);
-        if (toggleLoc.checked) {
-          locEl.textContent = address.split('\n')[0];
-          addrEl.textContent = address;
-          locEl.classList.remove('unknown');
+        if (address) {
+          addrBlock.style.display = 'flex';
+          addrEl.textContent = address.replace(/\n/g, ' · ');
         }
+        if (toggleLoc.checked) locEl.textContent = address ? address.split('\n')[0] : '—';
       }
 
-      // Debounced refresh (for subsequent position updates)
       clearTimeout(geoTimer);
       geoTimer = setTimeout(async () => {
         const fresh = await reverseGeocode(geo.lat, geo.lng);
-        if (fresh) { address = fresh; addrEl.textContent = address; }
+        if (fresh) {
+          address = fresh;
+          addrBlock.style.display = 'flex';
+          addrEl.textContent = address.replace(/\n/g, ' · ');
+        }
       }, 5000);
     },
     () => {
       locEl.textContent = 'Location denied';
-      locEl.classList.add('unknown');
+      locDot.className = 'loc-dot denied';
     },
     { enableHighAccuracy: true, timeout: 10000, maximumAge: 5000 }
   );
@@ -257,24 +486,28 @@ const MONTH_EN = ['January','February','March','April','May','June',
                   'July','August','September','October','November','December'];
 
 function formatWIB(date) {
-  const offset = 7 * 60; // WIB is UTC+7
+  const offset = 7 * 60;
   const utc    = date.getTime() + date.getTimezoneOffset() * 60000;
   const wib    = new Date(utc + offset * 60000);
   const pad    = (n) => String(n).padStart(2, '0');
-  const day    = wib.getDate();
-  const month  = MONTH_EN[wib.getMonth()];
-  const year   = wib.getFullYear();
-  return `${day} ${month} ${year} ` +
-         `${pad(wib.getHours())}:${pad(wib.getMinutes())}:${pad(wib.getSeconds())} WIB`;
+  return {
+    date: `${wib.getDate()} ${MONTH_EN[wib.getMonth()]} ${wib.getFullYear()}`,
+    time: `${pad(wib.getHours())}:${pad(wib.getMinutes())}:${pad(wib.getSeconds())}`,
+  };
 }
 
 function tickClock() {
-  liveTime = formatWIB(new Date());
-  timeEl.textContent = toggleTime.checked ? liveTime : '—';
+  const { date, time } = formatWIB(new Date());
+  liveTime = `${date}  ${time} WIB`;
+  if (toggleTime.checked) {
+    timeEl.innerHTML = `<span class="date">${date}</span>  ${time} WIB`;
+  } else {
+    timeEl.innerHTML = '<span class="date">— —</span>';
+  }
   requestAnimationFrame(tickClock);
 }
 
-// ─── PWA Install ────────────────────────────────────────────────
+// ─── PWA Install ───────────────────────────────────────────────
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   installPrompt = e;
@@ -294,9 +527,10 @@ async function capture() {
   if (!stream) return;
 
   const now = new Date();
-  const ts  = formatWIB(now).replace(/[: ]/g, '-');
-  const w   = video.videoWidth  || 640;
-  const h   = video.videoHeight || 480;
+  const { date, time } = formatWIB(now);
+  const ts = `${date.replace(/ /g,'-')}_${time.replace(/:/g,'-')}_WIB`;
+  const w  = video.videoWidth  || 640;
+  const h  = video.videoHeight || 480;
   const canvas = document.createElement('canvas');
   canvas.width  = w;
   canvas.height = h;
@@ -304,99 +538,80 @@ async function capture() {
 
   ctx.drawImage(video, 0, 0, w, h);
 
-  // ── Build overlay lines (bottom-right, right-aligned) ──
   const lines = [];
-  if (toggleTime.checked) lines.push(liveTime);
+  if (toggleTime.checked) lines.push(`${date}  ${time} WIB`);
   if (toggleLoc.checked) {
-    if (address) {
-      lines.push(...address.split('\n').filter(Boolean));
-    } else if (geo) {
-      lines.push(`${geo.lat.toFixed(6)}, ${geo.lng.toFixed(6)}`);
-    }
+    if (address) lines.push(...address.split('\n').filter(Boolean));
+    else if (geo) lines.push(`${geo.lat.toFixed(6)}, ${geo.lng.toFixed(6)}`);
   }
 
   if (lines.length > 0) {
     const fontSize = Math.max(11, Math.floor(w / 72));
-    const lineH    = fontSize * 1.45;
-    const padX     = 16;
+    const lineH    = fontSize * 1.5;
+    const padX     = 14;
     const padY     = 10;
-    const padding  = 8;
 
-    ctx.font = `600 ${fontSize}px "Courier New", monospace`;
+    ctx.font = `500 ${fontSize}px "IBM Plex Mono", monospace`;
 
     const maxLineW = Math.max(...lines.map((l) => ctx.measureText(l).width));
     const boxW     = maxLineW + padX * 2;
-    const boxH     = lines.length * lineH + padY * 2 - padding;
+    const boxH     = lines.length * lineH + padY * 2;
     const bx       = w - boxW - 14;
     const by       = h - boxH - 14;
 
-    ctx.fillStyle = 'rgba(0,0,0,0.0)';
-    ctx.fillRect(bx, by, boxW, boxH);
-
     ctx.textBaseline = 'top';
-    ctx.textAlign = 'right';
+    ctx.textAlign     = 'right';
     lines.forEach((line, i) => {
       const tx = w - 14 - padX;
       const ty = by + padY + i * lineH;
 
-      ctx.font = `600 ${fontSize}px "Courier New", monospace`;
-      ctx.strokeStyle = 'rgba(0,0,0,0.75)';
-      ctx.lineWidth   = fontSize * 0.12;
+      ctx.font = `500 ${fontSize}px "IBM Plex Mono", monospace`;
+      ctx.strokeStyle = 'rgba(0,0,0,0.8)';
+      ctx.lineWidth   = fontSize * 0.14;
       ctx.lineJoin    = 'round';
       ctx.strokeText(line, tx, ty);
 
-      ctx.fillStyle = '#ffffff';
+      ctx.fillStyle = 'rgba(245,230,211,0.97)';
       ctx.fillText(line, tx, ty);
     });
   }
 
-  const metadata = {
-    timestamp: now.toISOString(),
-    lat: geo?.lat ?? null,
-    lng: geo?.lng ?? null,
-    accuracy: geo?.acc ?? null,
-    address: address || null,
-    includeLocation: toggleLoc.checked,
-    includeTimestamp: toggleTime.checked
-  };
-
   canvas.toBlob((blob) => {
     if (!blob) return;
-
     const filename = `capturestamp_${ts}.png`;
-
-    // ── Download PNG ──
-    const blobUrl = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = blobUrl;
+    const blobUrl  = URL.createObjectURL(blob);
+    const a        = document.createElement('a');
+    a.href     = blobUrl;
     a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-captureCount++;
-    setStatus(`Saved capture #${captureCount}`, 'ok');
+    URL.revokeObjectURL(blobUrl);
+
+    captureCount++;
+    setStatus(`Capture #${captureCount} saved`, 'ok');
   }, 'image/png');
 }
 
 // ─── Status helper ─────────────────────────────────────────────
 function setStatus(msg, cls = '') {
   statusEl.textContent = msg;
-  statusEl.className = 'status' + (cls ? ' ' + cls : '');
+  statusEl.className   = 'status' + (cls ? ' ' + cls : '');
 }
 
 // ─── Events ─────────────────────────────────────────────────────
 captureBtn.addEventListener('click', capture);
 toggleLoc.addEventListener('change', () => {
   if (toggleLoc.checked) {
-    locEl.textContent  = address ? address.split('\n')[0] : '—';
-    addrEl.textContent = address;
+    locEl.textContent = address ? address.split('\n')[0] : '—';
+    addrBlock.style.display = address ? 'flex' : 'none';
   } else {
     locEl.textContent  = '—';
-    addrEl.textContent = '';
+    addrBlock.style.display = 'none';
   }
 });
 toggleTime.addEventListener('change', () => {
-  timeEl.textContent = toggleTime.checked ? liveTime : '—';
+  if (!toggleTime.checked) timeEl.innerHTML = '<span class="date">— —</span>';
 });
 
 // ─── Boot ───────────────────────────────────────────────────────
