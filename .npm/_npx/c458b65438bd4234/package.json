@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "create-qwik": "^1.19.2"
+  }
+}

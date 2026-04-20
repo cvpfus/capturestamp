@@ -1,0 +1,1269 @@
+0 verbose cli /usr/bin/node /usr/bin/npm
+1 info using npm@9.2.0
+2 info using node@v20.19.2
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 3ms
+5 timing config:load:file:/usr/share/nodejs/npm/npmrc Completed in 14ms
+6 timing config:load:builtin Completed in 14ms
+7 timing config:load:cli Completed in 5ms
+8 timing config:load:env Completed in 1ms
+9 timing config:load:file:/opt/hermes/simple-qwik-app/.npmrc Completed in 1ms
+10 timing config:load:project Completed in 13ms
+11 timing config:load:file:/opt/data/home/.npmrc Completed in 1ms
+12 timing config:load:user Completed in 2ms
+13 timing config:load:file:/etc/npmrc Completed in 1ms
+14 timing config:load:global Completed in 1ms
+15 timing config:load:setEnvs Completed in 3ms
+16 timing config:load Completed in 42ms
+17 timing npm:load:configload Completed in 43ms
+18 timing npm:load:mkdirpcache Completed in 1ms
+19 timing npm:load:mkdirplogs Completed in 1ms
+20 verbose title npm install tailwindcss postcss autoprefixer
+21 verbose argv "install" "--save-dev" "tailwindcss" "postcss" "autoprefixer"
+22 timing npm:load:setTitle Completed in 5ms
+23 timing config:load:flatten Completed in 11ms
+24 timing npm:load:display Completed in 15ms
+25 verbose logfile logs-max:10 dir:/opt/data/home/.npm/_logs/2026-04-20T00_47_12_191Z-
+26 verbose logfile /opt/data/home/.npm/_logs/2026-04-20T00_47_12_191Z-debug-0.log
+27 timing npm:load:logFile Completed in 25ms
+28 timing npm:load:timers Completed in 0ms
+29 timing npm:load:configScope Completed in 0ms
+30 timing npm:load Completed in 93ms
+31 silly logfile start cleaning logs, removing 1 files
+32 timing config:load:flatten Completed in 1ms
+33 timing arborist:ctor Completed in 1ms
+34 silly logfile done cleaning log files
+35 timing idealTree:init Completed in 914ms
+36 timing idealTree:userRequests Completed in 32ms
+37 silly idealTree buildDeps
+38 silly fetch manifest tailwindcss@*
+39 timing arborist:ctor Completed in 1ms
+40 http fetch GET 200 https://registry.npmjs.org/tailwindcss 1313ms (cache miss)
+41 silly fetch manifest postcss@*
+42 http fetch GET 200 https://registry.npmjs.org/postcss 123ms (cache revalidated)
+43 silly fetch manifest autoprefixer@*
+44 http fetch GET 200 https://registry.npmjs.org/autoprefixer 61ms (cache miss)
+45 silly placeDep ROOT autoprefixer@10.5.0 OK for:  want: *
+46 silly placeDep ROOT postcss@8.5.10 REPLACE for:  want: *
+47 silly placeDep ROOT tailwindcss@4.2.2 OK for:  want: *
+48 silly fetch manifest browserslist@^4.28.2
+49 silly fetch manifest caniuse-lite@^1.0.30001787
+50 silly fetch manifest fraction.js@^5.3.4
+51 http fetch GET 200 https://registry.npmjs.org/fraction.js 48ms (cache miss)
+52 http fetch GET 200 https://registry.npmjs.org/browserslist 112ms (cache miss)
+53 http fetch GET 200 https://registry.npmjs.org/caniuse-lite 154ms (cache miss)
+54 timing idealTree:#root Completed in 1780ms
+55 silly placeDep ROOT browserslist@4.28.2 OK for: autoprefixer@10.5.0 want: ^4.28.2
+56 silly placeDep ROOT caniuse-lite@1.0.30001788 OK for: autoprefixer@10.5.0 want: ^1.0.30001787
+57 silly placeDep ROOT fraction.js@5.3.4 OK for: autoprefixer@10.5.0 want: ^5.3.4
+58 silly fetch manifest baseline-browser-mapping@^2.10.12
+59 silly fetch manifest electron-to-chromium@^1.5.328
+60 silly fetch manifest node-releases@^2.0.36
+61 silly fetch manifest update-browserslist-db@^1.2.3
+62 http fetch GET 200 https://registry.npmjs.org/baseline-browser-mapping 74ms (cache miss)
+63 http fetch GET 200 https://registry.npmjs.org/node-releases 95ms (cache miss)
+64 http fetch GET 200 https://registry.npmjs.org/update-browserslist-db 113ms (cache miss)
+65 http fetch GET 200 https://registry.npmjs.org/electron-to-chromium 233ms (cache miss)
+66 timing idealTree:node_modules/autoprefixer Completed in 272ms
+67 silly fetch manifest browserslist@>= 4.21.0
+68 silly placeDep ROOT baseline-browser-mapping@2.10.20 OK for: browserslist@4.28.2 want: ^2.10.12
+69 silly placeDep ROOT electron-to-chromium@1.5.340 OK for: browserslist@4.28.2 want: ^1.5.328
+70 silly placeDep ROOT node-releases@2.0.37 OK for: browserslist@4.28.2 want: ^2.0.36
+71 silly placeDep ROOT update-browserslist-db@1.2.3 OK for: browserslist@4.28.2 want: ^1.2.3
+72 silly fetch manifest escalade@^3.2.0
+73 http fetch GET 200 https://registry.npmjs.org/escalade 56ms (cache miss)
+74 timing idealTree:node_modules/browserslist Completed in 77ms
+75 timing idealTree:node_modules/baseline-browser-mapping Completed in 0ms
+76 timing idealTree:node_modules/caniuse-lite Completed in 0ms
+77 timing idealTree:node_modules/electron-to-chromium Completed in 0ms
+78 timing idealTree:node_modules/fraction.js Completed in 0ms
+79 timing idealTree:node_modules/node-releases Completed in 0ms
+80 timing idealTree:node_modules/postcss Completed in 0ms
+81 timing idealTree:node_modules/tailwindcss Completed in 0ms
+82 silly placeDep ROOT escalade@3.2.0 OK for: update-browserslist-db@1.2.3 want: ^3.2.0
+83 timing idealTree:node_modules/update-browserslist-db Completed in 4ms
+84 timing idealTree:node_modules/escalade Completed in 0ms
+85 timing idealTree:buildDeps Completed in 2136ms
+86 timing idealTree:fixDepFlags Completed in 15ms
+87 timing idealTree Completed in 3117ms
+88 timing reify:loadTrees Completed in 3121ms
+89 timing reify:diffTrees Completed in 23ms
+90 silly reify moves {}
+91 timing reify:retireShallow Completed in 3ms
+92 timing reify:createSparse Completed in 15ms
+93 timing reify:loadBundles Completed in 0ms
+94 silly audit bulk request {
+94 silly audit   '@adobe/css-tools': [ '4.3.3' ],
+94 silly audit   '@builder.io/qwik': [ '1.19.2' ],
+94 silly audit   '@builder.io/qwik-city': [ '1.19.2' ],
+94 silly audit   '@emnapi/runtime': [ '1.10.0' ],
+94 silly audit   '@esbuild/aix-ppc64': [ '0.27.7' ],
+94 silly audit   '@esbuild/android-arm': [ '0.27.7' ],
+94 silly audit   '@esbuild/android-arm64': [ '0.27.7' ],
+94 silly audit   '@esbuild/android-x64': [ '0.27.7' ],
+94 silly audit   '@esbuild/darwin-arm64': [ '0.27.7' ],
+94 silly audit   '@esbuild/darwin-x64': [ '0.27.7' ],
+94 silly audit   '@esbuild/freebsd-arm64': [ '0.27.7' ],
+94 silly audit   '@esbuild/freebsd-x64': [ '0.27.7' ],
+94 silly audit   '@esbuild/linux-arm': [ '0.27.7' ],
+94 silly audit   '@esbuild/linux-arm64': [ '0.27.7' ],
+94 silly audit   '@esbuild/linux-ia32': [ '0.27.7' ],
+94 silly audit   '@esbuild/linux-loong64': [ '0.27.7' ],
+94 silly audit   '@esbuild/linux-mips64el': [ '0.27.7' ],
+94 silly audit   '@esbuild/linux-ppc64': [ '0.27.7' ],
+94 silly audit   '@esbuild/linux-riscv64': [ '0.27.7' ],
+94 silly audit   '@esbuild/linux-s390x': [ '0.27.7' ],
+94 silly audit   '@esbuild/linux-x64': [ '0.27.7' ],
+94 silly audit   '@esbuild/netbsd-arm64': [ '0.27.7' ],
+94 silly audit   '@esbuild/netbsd-x64': [ '0.27.7' ],
+94 silly audit   '@esbuild/openbsd-arm64': [ '0.27.7' ],
+94 silly audit   '@esbuild/openbsd-x64': [ '0.27.7' ],
+94 silly audit   '@esbuild/openharmony-arm64': [ '0.27.7' ],
+94 silly audit   '@esbuild/sunos-x64': [ '0.27.7' ],
+94 silly audit   '@esbuild/win32-arm64': [ '0.27.7' ],
+94 silly audit   '@esbuild/win32-ia32': [ '0.27.7' ],
+94 silly audit   '@esbuild/win32-x64': [ '0.27.7' ],
+94 silly audit   '@eslint-community/eslint-utils': [ '4.9.1' ],
+94 silly audit   'eslint-visitor-keys': [ '3.4.3', '5.0.1', '4.2.1' ],
+94 silly audit   '@eslint-community/regexpp': [ '4.12.2' ],
+94 silly audit   '@eslint/config-array': [ '0.21.2' ],
+94 silly audit   '@eslint/config-helpers': [ '0.3.1' ],
+94 silly audit   '@eslint/core': [ '0.15.2' ],
+94 silly audit   '@eslint/eslintrc': [ '3.3.5' ],
+94 silly audit   globals: [ '14.0.0', '16.4.0' ],
+94 silly audit   '@eslint/js': [ '9.39.4', '9.32.0' ],
+94 silly audit   '@eslint/object-schema': [ '2.1.7' ],
+94 silly audit   '@eslint/plugin-kit': [ '0.3.5' ],
+94 silly audit   '@fastify/busboy': [ '2.1.1' ],
+94 silly audit   '@humanfs/core': [ '0.19.2' ],
+94 silly audit   '@humanfs/node': [ '0.16.8' ],
+94 silly audit   '@humanfs/types': [ '0.15.0' ],
+94 silly audit   '@humanwhocodes/module-importer': [ '1.0.1' ],
+94 silly audit   '@humanwhocodes/retry': [ '0.4.3' ],
+94 silly audit   '@img/colour': [ '1.1.0' ],
+94 silly audit   '@img/sharp-darwin-arm64': [ '0.34.5' ],
+94 silly audit   '@img/sharp-darwin-x64': [ '0.34.5' ],
+94 silly audit   '@img/sharp-libvips-darwin-arm64': [ '1.2.4' ],
+94 silly audit   '@img/sharp-libvips-darwin-x64': [ '1.2.4' ],
+94 silly audit   '@img/sharp-libvips-linux-arm': [ '1.2.4' ],
+94 silly audit   '@img/sharp-libvips-linux-arm64': [ '1.2.4' ],
+94 silly audit   '@img/sharp-libvips-linux-ppc64': [ '1.2.4' ],
+94 silly audit   '@img/sharp-libvips-linux-riscv64': [ '1.2.4' ],
+94 silly audit   '@img/sharp-libvips-linux-s390x': [ '1.2.4' ],
+94 silly audit   '@img/sharp-libvips-linux-x64': [ '1.2.4' ],
+94 silly audit   '@img/sharp-libvips-linuxmusl-arm64': [ '1.2.4' ],
+94 silly audit   '@img/sharp-libvips-linuxmusl-x64': [ '1.2.4' ],
+94 silly audit   '@img/sharp-linux-arm': [ '0.34.5' ],
+94 silly audit   '@img/sharp-linux-arm64': [ '0.34.5' ],
+94 silly audit   '@img/sharp-linux-ppc64': [ '0.34.5' ],
+94 silly audit   '@img/sharp-linux-riscv64': [ '0.34.5' ],
+94 silly audit   '@img/sharp-linux-s390x': [ '0.34.5' ],
+94 silly audit   '@img/sharp-linux-x64': [ '0.34.5' ],
+94 silly audit   '@img/sharp-linuxmusl-arm64': [ '0.34.5' ],
+94 silly audit   '@img/sharp-linuxmusl-x64': [ '0.34.5' ],
+94 silly audit   '@img/sharp-wasm32': [ '0.34.5' ],
+94 silly audit   '@img/sharp-win32-arm64': [ '0.34.5' ],
+94 silly audit   '@img/sharp-win32-ia32': [ '0.34.5' ],
+94 silly audit   '@img/sharp-win32-x64': [ '0.34.5' ],
+94 silly audit   '@mdx-js/mdx': [ '3.1.1' ],
+94 silly audit   '@nodelib/fs.scandir': [ '2.1.5' ],
+94 silly audit   '@nodelib/fs.stat': [ '2.0.5' ],
+94 silly audit   '@nodelib/fs.walk': [ '1.2.8' ],
+94 silly audit   '@parcel/watcher': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-android-arm64': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-darwin-arm64': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-darwin-x64': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-freebsd-x64': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-linux-arm-glibc': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-linux-arm-musl': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-linux-arm64-glibc': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-linux-arm64-musl': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-linux-x64-glibc': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-linux-x64-musl': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-win32-arm64': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-win32-ia32': [ '2.5.6' ],
+94 silly audit   '@parcel/watcher-win32-x64': [ '2.5.6' ],
+94 silly audit   '@rollup/pluginutils': [ '5.3.0' ],
+94 silly audit   'estree-walker': [ '2.0.2', '3.0.3' ],
+94 silly audit   '@rollup/rollup-android-arm-eabi': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-android-arm64': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-darwin-arm64': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-darwin-x64': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-freebsd-arm64': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-freebsd-x64': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-arm-gnueabihf': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-arm-musleabihf': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-arm64-gnu': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-arm64-musl': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-loong64-gnu': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-loong64-musl': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-ppc64-gnu': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-ppc64-musl': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-riscv64-gnu': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-riscv64-musl': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-s390x-gnu': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-x64-gnu': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-linux-x64-musl': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-openbsd-x64': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-openharmony-arm64': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-win32-arm64-msvc': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-win32-ia32-msvc': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-win32-x64-gnu': [ '4.60.2' ],
+94 silly audit   '@rollup/rollup-win32-x64-msvc': [ '4.60.2' ],
+94 silly audit   '@sindresorhus/is': [ '4.6.0' ],
+94 silly audit   '@szmarczak/http-timer': [ '4.0.6' ],
+94 silly audit   '@types/cacheable-request': [ '6.0.3' ],
+94 silly audit   '@types/debug': [ '4.1.13' ],
+94 silly audit   '@types/estree': [ '1.0.8' ],
+94 silly audit   '@types/estree-jsx': [ '1.0.5' ],
+94 silly audit   '@types/hast': [ '3.0.4' ],
+94 silly audit   '@types/http-cache-semantics': [ '4.2.0' ],
+94 silly audit   '@types/json-schema': [ '7.0.15' ],
+94 silly audit   '@types/keyv': [ '3.1.4' ],
+94 silly audit   '@types/mdast': [ '4.0.4' ],
+94 silly audit   '@types/mdx': [ '2.0.13' ],
+94 silly audit   '@types/ms': [ '2.1.0' ],
+94 silly audit   '@types/node': [ '20.19.0' ],
+94 silly audit   '@types/postcss-modules-local-by-default': [ '4.0.2' ],
+94 silly audit   '@types/postcss-modules-scope': [ '3.0.4' ],
+94 silly audit   '@types/responselike': [ '1.0.3' ],
+94 silly audit   '@types/unist': [ '3.0.3', '2.0.11' ],
+94 silly audit   '@types/yauzl': [ '2.10.3' ],
+94 silly audit   '@typescript-eslint/eslint-plugin': [ '8.38.0' ],
+94 silly audit   '@typescript-eslint/project-service': [ '8.38.0', '8.58.2' ],
+94 silly audit   '@typescript-eslint/scope-manager': [ '8.38.0', '8.58.2' ],
+94 silly audit   '@typescript-eslint/tsconfig-utils': [ '8.38.0', '8.58.2' ],
+94 silly audit   '@typescript-eslint/types': [ '8.38.0', '8.58.2' ],
+94 silly audit   '@typescript-eslint/typescript-estree': [ '8.38.0', '8.58.2' ],
+94 silly audit   '@typescript-eslint/utils': [ '8.38.0', '8.58.2' ],
+94 silly audit   '@typescript-eslint/visitor-keys': [ '8.38.0', '8.58.2' ],
+94 silly audit   'brace-expansion': [ '2.1.0', '5.0.5', '1.1.14' ],
+94 silly audit   ignore: [ '7.0.5', '5.3.2' ],
+94 silly audit   minimatch: [ '9.0.9', '10.2.5', '3.1.5' ],
+94 silly audit   '@typescript-eslint/parser': [ '8.38.0' ],
+94 silly audit   '@typescript-eslint/type-utils': [ '8.38.0' ],
+94 silly audit   'balanced-match': [ '4.0.4', '1.0.2' ],
+94 silly audit   '@ungap/structured-clone': [ '1.3.0' ],
+94 silly audit   acorn: [ '8.16.0' ],
+94 silly audit   'acorn-jsx': [ '5.3.2' ],
+94 silly audit   ajv: [ '6.14.0' ],
+94 silly audit   'ansi-styles': [ '4.3.0' ],
+94 silly audit   argparse: [ '2.0.1' ],
+94 silly audit   'array-buffer-byte-length': [ '1.0.2' ],
+94 silly audit   'array-includes': [ '3.1.9' ],
+94 silly audit   'array.prototype.flat': [ '1.3.3' ],
+94 silly audit   'arraybuffer.prototype.slice': [ '1.0.4' ],
+94 silly audit   astring: [ '1.9.0' ],
+94 silly audit   'async-function': [ '1.0.0' ],
+94 silly audit   'available-typed-arrays': [ '1.0.7' ],
+94 silly audit   bail: [ '2.0.2' ],
+94 silly audit   boolbase: [ '1.0.0' ],
+94 silly audit   braces: [ '3.0.3' ],
+94 silly audit   'buffer-crc32': [ '0.2.13' ],
+94 silly audit   'cacheable-lookup': [ '5.0.4' ],
+94 silly audit   'cacheable-request': [ '7.0.4' ],
+94 silly audit   'call-bind': [ '1.0.9' ],
+94 silly audit   'call-bind-apply-helpers': [ '1.0.2' ],
+94 silly audit   'call-bound': [ '1.0.4' ],
+94 silly audit   callsites: [ '3.1.0' ],
+94 silly audit   ccount: [ '2.0.1' ],
+94 silly audit   chalk: [ '4.1.2' ],
+94 silly audit   'character-entities': [ '2.0.2' ],
+94 silly audit   'character-entities-html4': [ '2.1.0' ],
+94 silly audit   'character-entities-legacy': [ '3.0.0' ],
+94 silly audit   'character-reference-invalid': [ '2.0.1' ],
+94 silly audit   chokidar: [ '4.0.3' ],
+94 silly audit   'clone-response': [ '1.0.3' ],
+94 silly audit   cloudflared: [ '0.7.1' ],
+94 silly audit   'collapse-white-space': [ '2.1.0' ],
+94 silly audit   'color-convert': [ '2.0.1' ],
+94 silly audit   'color-name': [ '1.1.4' ],
+94 silly audit   'comma-separated-tokens': [ '2.0.3' ],
+94 silly audit   commander: [ '7.2.0' ],
+94 silly audit   'concat-map': [ '0.0.1' ],
+94 silly audit   'copy-anything': [ '3.0.5' ],
+94 silly audit   'cross-spawn': [ '7.0.6' ],
+94 silly audit   'css-select': [ '5.2.2' ],
+94 silly audit   'css-tree': [ '2.3.1', '2.2.1' ],
+94 silly audit   'css-what': [ '6.2.2' ],
+94 silly audit   cssesc: [ '3.0.0' ],
+94 silly audit   csso: [ '5.0.5' ],
+94 silly audit   'mdn-data': [ '2.0.28', '2.0.30' ],
+94 silly audit   csstype: [ '3.2.3' ],
+94 silly audit   'data-view-buffer': [ '1.0.2' ],
+94 silly audit   'data-view-byte-length': [ '1.0.2' ],
+94 silly audit   'data-view-byte-offset': [ '1.0.1' ],
+94 silly audit   debug: [ '4.4.3' ],
+94 silly audit   'decode-named-character-reference': [ '1.3.0' ],
+94 silly audit   'decompress-response': [ '6.0.0' ],
+94 silly audit   'mimic-response': [ '3.1.0', '1.0.1' ],
+94 silly audit   'deep-is': [ '0.1.4' ],
+94 silly audit   'defer-to-connect': [ '2.0.1' ],
+94 silly audit   'define-data-property': [ '1.1.4' ],
+94 silly audit   'define-properties': [ '1.2.1' ],
+94 silly audit   dequal: [ '2.0.3' ],
+94 silly audit   'detect-libc': [ '2.1.2' ],
+94 silly audit   devlop: [ '1.1.0' ],
+94 silly audit   'dom-serializer': [ '2.0.0' ],
+94 silly audit   domelementtype: [ '2.3.0' ],
+94 silly audit   domhandler: [ '5.0.3' ],
+94 silly audit   domutils: [ '3.2.2' ],
+94 silly audit   dotenv: [ '16.6.1' ],
+94 silly audit   'dunder-proto': [ '1.0.1' ],
+94 silly audit   'end-of-stream': [ '1.4.5' ],
+94 silly audit   entities: [ '4.5.0' ],
+94 silly audit   errno: [ '0.1.8' ],
+94 silly audit   'es-abstract': [ '1.24.2' ],
+94 silly audit   'es-define-property': [ '1.0.1' ],
+94 silly audit   'es-errors': [ '1.3.0' ],
+94 silly audit   'es-object-atoms': [ '1.1.1' ],
+94 silly audit   'es-set-tostringtag': [ '2.1.0' ],
+94 silly audit   'es-shim-unscopables': [ '1.1.0' ],
+94 silly audit   'es-to-primitive': [ '1.3.0' ],
+94 silly audit   'esast-util-from-estree': [ '2.0.0' ],
+94 silly audit   'esast-util-from-js': [ '2.0.1' ],
+94 silly audit   esbuild: [ '0.27.7' ],
+94 silly audit   'escape-string-regexp': [ '4.0.0' ],
+94 silly audit   eslint: [ '9.32.0' ],
+94 silly audit   'eslint-plugin-qwik': [ '1.19.2' ],
+94 silly audit   'eslint-scope': [ '8.4.0' ],
+94 silly audit   espree: [ '10.4.0' ],
+94 silly audit   esquery: [ '1.7.0' ],
+94 silly audit   esrecurse: [ '4.3.0' ],
+94 silly audit   estraverse: [ '5.3.0' ],
+94 silly audit   'estree-util-attach-comments': [ '3.0.0' ],
+94 silly audit   'estree-util-build-jsx': [ '3.0.1' ],
+94 silly audit   'estree-util-is-identifier-name': [ '3.0.0' ],
+94 silly audit   'estree-util-scope': [ '1.0.0' ],
+94 silly audit   'estree-util-to-js': [ '2.0.0' ],
+94 silly audit   'estree-util-visit': [ '2.0.0' ],
+94 silly audit   esutils: [ '2.0.3' ],
+94 silly audit   extend: [ '3.0.2' ],
+94 silly audit   'extract-zip': [ '2.0.1' ],
+94 silly audit   'fast-deep-equal': [ '3.1.3' ],
+94 silly audit   'fast-glob': [ '3.3.3' ],
+94 silly audit   'glob-parent': [ '5.1.2', '6.0.2' ],
+94 silly audit   'fast-json-stable-stringify': [ '2.1.0' ],
+94 silly audit   'fast-levenshtein': [ '2.0.6' ],
+94 silly audit   fastq: [ '1.20.1' ],
+94 silly audit   'fd-slicer': [ '1.1.0' ],
+94 silly audit   fdir: [ '6.5.0' ],
+94 silly audit   'file-entry-cache': [ '8.0.0' ],
+94 silly audit   'fill-range': [ '7.1.1' ],
+94 silly audit   'find-up': [ '5.0.0' ],
+94 silly audit   'flat-cache': [ '4.0.1' ],
+94 silly audit   flatted: [ '3.4.2' ],
+94 silly audit   'for-each': [ '0.3.5' ],
+94 silly audit   'fs.realpath': [ '1.0.0' ],
+94 silly audit   fsevents: [ '2.3.3' ],
+94 silly audit   'function-bind': [ '1.1.2' ],
+94 silly audit   'function.prototype.name': [ '1.1.8' ],
+94 silly audit   'functions-have-names': [ '1.2.3' ],
+94 silly audit   'generator-function': [ '2.0.1' ],
+94 silly audit   'get-intrinsic': [ '1.3.0' ],
+94 silly audit   'get-proto': [ '1.0.1' ],
+94 silly audit   'get-stream': [ '5.2.0' ],
+94 silly audit   'get-symbol-description': [ '1.1.0' ],
+94 silly audit   glob: [ '7.2.3' ],
+94 silly audit   globalthis: [ '1.0.4' ],
+94 silly audit   globrex: [ '0.1.2' ],
+94 silly audit   gopd: [ '1.2.0' ],
+94 silly audit   got: [ '11.8.6' ],
+94 silly audit   'graceful-fs': [ '4.2.11' ],
+94 silly audit   graphemer: [ '1.4.0' ],
+94 silly audit   'has-bigints': [ '1.1.0' ],
+94 silly audit   'has-flag': [ '4.0.0' ],
+94 silly audit   'has-property-descriptors': [ '1.0.2' ],
+94 silly audit   'has-proto': [ '1.2.0' ],
+94 silly audit   'has-symbols': [ '1.1.0' ],
+94 silly audit   'has-tostringtag': [ '1.0.2' ],
+94 silly audit   hasown: [ '2.0.3' ],
+94 silly audit   'hast-util-to-estree': [ '3.1.3' ],
+94 silly audit   'hast-util-to-jsx-runtime': [ '2.3.6' ],
+94 silly audit   'hast-util-whitespace': [ '3.0.0' ],
+94 silly audit   hpagent: [ '0.1.2' ],
+94 silly audit   'http-cache-semantics': [ '4.2.0' ],
+94 silly audit   'http2-wrapper': [ '1.0.3' ],
+94 silly audit   'iconv-lite': [ '0.6.3' ],
+94 silly audit   'icss-utils': [ '5.1.0' ],
+94 silly audit   'image-size': [ '0.5.5' ],
+94 silly audit   'imagetools-core': [ '9.1.0' ],
+94 silly audit   immutable: [ '5.1.5' ],
+94 silly audit   'import-fresh': [ '3.3.1' ],
+94 silly audit   imurmurhash: [ '0.1.4' ],
+94 silly audit   inflight: [ '1.0.6' ],
+94 silly audit   inherits: [ '2.0.4' ],
+94 silly audit   'inline-style-parser': [ '0.2.7' ],
+94 silly audit   'internal-slot': [ '1.1.0' ],
+94 silly audit   'is-alphabetical': [ '2.0.1' ],
+94 silly audit   'is-alphanumerical': [ '2.0.1' ],
+94 silly audit   'is-array-buffer': [ '3.0.5' ],
+94 silly audit   'is-async-function': [ '2.1.1' ],
+94 silly audit   'is-bigint': [ '1.1.0' ],
+94 silly audit   'is-boolean-object': [ '1.2.2' ],
+94 silly audit   'is-callable': [ '1.2.7' ],
+94 silly audit   'is-data-view': [ '1.0.2' ],
+94 silly audit   'is-date-object': [ '1.1.0' ],
+94 silly audit   'is-decimal': [ '2.0.1' ],
+94 silly audit   'is-extglob': [ '2.1.1' ],
+94 silly audit   'is-finalizationregistry': [ '1.1.1' ],
+94 silly audit   'is-generator-function': [ '1.1.2' ],
+94 silly audit   'is-glob': [ '4.0.3' ],
+94 silly audit   'is-hexadecimal': [ '2.0.1' ],
+94 silly audit   'is-map': [ '2.0.3' ],
+94 silly audit   'is-negative-zero': [ '2.0.3' ],
+94 silly audit   'is-number': [ '7.0.0' ],
+94 silly audit   'is-number-object': [ '1.1.1' ],
+94 silly audit   'is-plain-obj': [ '4.1.0' ],
+94 silly audit   'is-regex': [ '1.2.1' ],
+94 silly audit   'is-set': [ '2.0.3' ],
+94 silly audit   'is-shared-array-buffer': [ '1.0.4' ],
+94 silly audit   'is-string': [ '1.1.1' ],
+94 silly audit   'is-symbol': [ '1.1.1' ],
+94 silly audit   'is-typed-array': [ '1.1.15' ],
+94 silly audit   'is-weakmap': [ '2.0.2' ],
+94 silly audit   'is-weakref': [ '1.1.1' ],
+94 silly audit   'is-weakset': [ '2.0.4' ],
+94 silly audit   'is-what': [ '4.1.16' ],
+94 silly audit   isarray: [ '2.0.5' ],
+94 silly audit   isexe: [ '2.0.0' ],
+94 silly audit   'js-yaml': [ '4.1.1' ],
+94 silly audit   'json-buffer': [ '3.0.1' ],
+94 silly audit   'json-schema-traverse': [ '0.4.1' ],
+94 silly audit   'json-stable-stringify-without-jsonify': [ '1.0.1' ],
+94 silly audit   json5: [ '2.2.3' ],
+94 silly audit   'jsx-ast-utils': [ '3.3.5' ],
+94 silly audit   keyv: [ '4.5.4' ],
+94 silly audit   'launch-editor': [ '2.13.2' ],
+94 silly audit   less: [ '4.6.4' ],
+94 silly audit   'source-map': [ '0.6.1', '0.7.6' ],
+94 silly audit   levn: [ '0.4.1' ],
+94 silly audit   lilconfig: [ '2.1.0' ],
+94 silly audit   'locate-path': [ '6.0.0' ],
+94 silly audit   'lodash.camelcase': [ '4.3.0' ],
+94 silly audit   'lodash.clonedeep': [ '4.5.0' ],
+94 silly audit   'lodash.merge': [ '4.6.2' ],
+94 silly audit   'longest-streak': [ '3.1.0' ],
+94 silly audit   'lowercase-keys': [ '2.0.0' ],
+94 silly audit   'make-dir': [ '2.1.0' ],
+94 silly audit   semver: [ '5.7.2', '7.7.4' ],
+94 silly audit   'markdown-extensions': [ '2.0.0' ],
+94 silly audit   'math-intrinsics': [ '1.1.0' ],
+94 silly audit   'mdast-util-from-markdown': [ '2.0.3' ],
+94 silly audit   'mdast-util-mdx': [ '3.0.0' ],
+94 silly audit   'mdast-util-mdx-expression': [ '2.0.1' ],
+94 silly audit   'mdast-util-mdx-jsx': [ '3.2.0' ],
+94 silly audit   'mdast-util-mdxjs-esm': [ '2.0.1' ],
+94 silly audit   'mdast-util-phrasing': [ '4.1.0' ],
+94 silly audit   'mdast-util-to-hast': [ '13.2.1' ],
+94 silly audit   'mdast-util-to-markdown': [ '2.1.2' ],
+94 silly audit   'mdast-util-to-string': [ '4.0.0' ],
+94 silly audit   merge2: [ '1.4.1' ],
+94 silly audit   micromark: [ '4.0.2' ],
+94 silly audit   'micromark-core-commonmark': [ '2.0.3' ],
+94 silly audit   'micromark-extension-mdx-expression': [ '3.0.1' ],
+94 silly audit   'micromark-extension-mdx-jsx': [ '3.0.2' ],
+94 silly audit   'micromark-extension-mdx-md': [ '2.0.0' ],
+94 silly audit   'micromark-extension-mdxjs': [ '3.0.0' ],
+94 silly audit   'micromark-extension-mdxjs-esm': [ '3.0.0' ],
+94 silly audit   'micromark-factory-destination': [ '2.0.1' ],
+94 silly audit   'micromark-factory-label': [ '2.0.1' ],
+94 silly audit   'micromark-factory-mdx-expression': [ '2.0.3' ],
+94 silly audit   'micromark-factory-space': [ '2.0.1' ],
+94 silly audit   'micromark-factory-title': [ '2.0.1' ],
+94 silly audit   'micromark-factory-whitespace': [ '2.0.1' ],
+94 silly audit   'micromark-util-character': [ '2.1.1' ],
+94 silly audit   'micromark-util-chunked': [ '2.0.1' ],
+94 silly audit   'micromark-util-classify-character': [ '2.0.1' ],
+94 silly audit   'micromark-util-combine-extensions': [ '2.0.1' ],
+94 silly audit   'micromark-util-decode-numeric-character-reference': [ '2.0.2' ],
+94 silly audit   'micromark-util-decode-string': [ '2.0.1' ],
+94 silly audit   'micromark-util-encode': [ '2.0.1' ],
+94 silly audit   'micromark-util-events-to-acorn': [ '2.0.3' ],
+94 silly audit   'micromark-util-html-tag-name': [ '2.0.1' ],
+94 silly audit   'micromark-util-normalize-identifier': [ '2.0.1' ],
+94 silly audit   'micromark-util-resolve-all': [ '2.0.1' ],
+94 silly audit   'micromark-util-sanitize-uri': [ '2.0.1' ],
+94 silly audit   'micromark-util-subtokenize': [ '2.1.0' ],
+94 silly audit   'micromark-util-symbol': [ '2.0.1' ],
+94 silly audit   'micromark-util-types': [ '2.0.2' ],
+94 silly audit   micromatch: [ '4.0.8' ],
+94 silly audit   picomatch: [ '2.3.2', '4.0.4' ],
+94 silly audit   mime: [ '1.6.0' ],
+94 silly audit   minimist: [ '1.2.8' ],
+94 silly audit   ms: [ '2.1.3' ],
+94 silly audit   nanoid: [ '3.3.11' ],
+94 silly audit   'natural-compare': [ '1.4.0' ],
+94 silly audit   needle: [ '3.5.0' ],
+94 silly audit   ngrok: [ '5.0.0-beta.2' ],
+94 silly audit   'node-addon-api': [ '7.1.1' ],
+94 silly audit   'normalize-url': [ '6.1.0' ],
+94 silly audit   'nth-check': [ '2.1.1' ],
+94 silly audit   'object-inspect': [ '1.13.4' ],
+94 silly audit   'object-keys': [ '1.1.1' ],
+94 silly audit   'object.assign': [ '4.1.7' ],
+94 silly audit   'object.values': [ '1.2.1' ],
+94 silly audit   once: [ '1.4.0' ],
+94 silly audit   optionator: [ '0.9.4' ],
+94 silly audit   'own-keys': [ '1.0.1' ],
+94 silly audit   'p-cancelable': [ '2.1.1' ],
+94 silly audit   'p-limit': [ '3.1.0' ],
+94 silly audit   'p-locate': [ '5.0.0' ],
+94 silly audit   'parent-module': [ '1.0.1' ],
+94 silly audit   'parse-entities': [ '4.0.2' ],
+94 silly audit   'parse-node-version': [ '1.0.1' ],
+94 silly audit   'path-exists': [ '4.0.0' ],
+94 silly audit   'path-is-absolute': [ '1.0.1' ],
+94 silly audit   'path-key': [ '3.1.1' ],
+94 silly audit   pend: [ '1.2.0' ],
+94 silly audit   picocolors: [ '1.1.1' ],
+94 silly audit   pify: [ '4.0.1' ],
+94 silly audit   'possible-typed-array-names': [ '1.1.0' ],
+94 silly audit   'postcss-load-config': [ '3.1.4' ],
+94 silly audit   yaml: [ '1.10.3', '2.8.3' ],
+94 silly audit   'postcss-modules-extract-imports': [ '3.1.0' ],
+94 silly audit   'postcss-modules-local-by-default': [ '4.2.0' ],
+94 silly audit   'postcss-modules-scope': [ '3.2.1' ],
+94 silly audit   'postcss-selector-parser': [ '7.1.1' ],
+94 silly audit   'postcss-value-parser': [ '4.2.0' ],
+94 silly audit   'prelude-ls': [ '1.2.1' ],
+94 silly audit   prettier: [ '3.6.2' ],
+94 silly audit   'property-information': [ '7.1.0' ],
+94 silly audit   prr: [ '1.0.1' ],
+94 silly audit   pump: [ '3.0.4' ],
+94 silly audit   punycode: [ '2.3.1' ],
+94 silly audit   'queue-microtask': [ '1.2.3' ],
+94 silly audit   'quick-lru': [ '5.1.1' ],
+94 silly audit   readdirp: [ '4.1.2' ],
+94 silly audit   'recma-build-jsx': [ '1.0.0' ],
+94 silly audit   'recma-jsx': [ '1.0.1' ],
+94 silly audit   'recma-parse': [ '1.0.0' ],
+94 silly audit   'recma-stringify': [ '1.0.0' ],
+94 silly audit   'reflect.getprototypeof': [ '1.0.10' ],
+94 silly audit   'regexp.prototype.flags': [ '1.5.4' ],
+94 silly audit   'rehype-recma': [ '1.0.0' ],
+94 silly audit   'remark-mdx': [ '3.1.1' ],
+94 silly audit   'remark-parse': [ '11.0.0' ],
+94 silly audit   'remark-rehype': [ '11.1.2' ],
+94 silly audit   'reserved-words': [ '0.1.2' ],
+94 silly audit   'resolve-alpn': [ '1.2.1' ],
+94 silly audit   'resolve-from': [ '4.0.0' ],
+94 silly audit   responselike: [ '2.0.1' ],
+94 silly audit   reusify: [ '1.1.0' ],
+94 silly audit   rollup: [ '4.60.2' ],
+94 silly audit   'run-parallel': [ '1.2.0' ],
+94 silly audit   'safe-array-concat': [ '1.1.3' ],
+94 silly audit   'safe-push-apply': [ '1.0.0' ],
+94 silly audit   'safe-regex-test': [ '1.1.0' ],
+94 silly audit   'safer-buffer': [ '2.1.2' ],
+94 silly audit   sass: [ '1.99.0' ],
+94 silly audit   sax: [ '1.6.0', '1.3.0' ],
+94 silly audit   'set-function-length': [ '1.2.2' ],
+94 silly audit   'set-function-name': [ '2.0.2' ],
+94 silly audit   'set-proto': [ '1.0.0' ],
+94 silly audit   sharp: [ '0.34.5' ],
+94 silly audit   'shebang-command': [ '2.0.0' ],
+94 silly audit   'shebang-regex': [ '3.0.0' ],
+94 silly audit   'shell-quote': [ '1.8.3' ],
+94 silly audit   'side-channel': [ '1.1.0' ],
+94 silly audit   'side-channel-list': [ '1.0.1' ],
+94 silly audit   'side-channel-map': [ '1.0.1' ],
+94 silly audit   'side-channel-weakmap': [ '1.0.2' ],
+94 silly audit   'source-map-js': [ '1.2.1' ],
+94 silly audit   'space-separated-tokens': [ '2.0.2' ],
+94 silly audit   'stop-iteration-iterator': [ '1.1.0' ],
+94 silly audit   'string.prototype.trim': [ '1.2.10' ],
+94 silly audit   'string.prototype.trimend': [ '1.0.9' ],
+94 silly audit   'string.prototype.trimstart': [ '1.0.8' ],
+94 silly audit   'stringify-entities': [ '4.0.4' ],
+94 silly audit   'strip-bom': [ '3.0.0' ],
+94 silly audit   'strip-json-comments': [ '3.1.1' ],
+94 silly audit   'style-to-js': [ '1.1.21' ],
+94 silly audit   'style-to-object': [ '1.0.14' ],
+94 silly audit   stylus: [ '0.62.0' ],
+94 silly audit   'supports-color': [ '7.2.0' ],
+94 silly audit   svgo: [ '3.3.3' ],
+94 silly audit   tinyglobby: [ '0.2.16' ],
+94 silly audit   'to-regex-range': [ '5.0.1' ],
+94 silly audit   'trim-lines': [ '3.0.1' ],
+94 silly audit   trough: [ '2.2.0' ],
+94 silly audit   'ts-api-utils': [ '2.5.0' ],
+94 silly audit   tsconfck: [ '3.1.6' ],
+94 silly audit   'tsconfig-paths': [ '4.2.0' ],
+94 silly audit   tslib: [ '2.8.1' ],
+94 silly audit   'type-check': [ '0.4.0' ],
+94 silly audit   'typed-array-buffer': [ '1.0.3' ],
+94 silly audit   'typed-array-byte-length': [ '1.0.3' ],
+94 silly audit   'typed-array-byte-offset': [ '1.0.4' ],
+94 silly audit   'typed-array-length': [ '1.0.7' ],
+94 silly audit   typescript: [ '5.4.5' ],
+94 silly audit   'typescript-eslint': [ '8.38.0' ],
+94 silly audit   'typescript-plugin-css-modules': [ '5.2.0' ],
+94 silly audit   'unbox-primitive': [ '1.1.0' ],
+94 silly audit   undici: [ '5.28.4' ],
+94 silly audit   'undici-types': [ '6.21.0' ],
+94 silly audit   unified: [ '11.0.5' ],
+94 silly audit   'unist-util-is': [ '6.0.1' ],
+94 silly audit   'unist-util-position': [ '5.0.0' ],
+94 silly audit   'unist-util-position-from-estree': [ '2.0.0' ],
+94 silly audit   'unist-util-stringify-position': [ '4.0.0' ],
+94 silly audit   'unist-util-visit': [ '5.1.0' ],
+94 silly audit   'unist-util-visit-parents': [ '6.0.2' ],
+94 silly audit   'uri-js': [ '4.4.1' ],
+94 silly audit   'util-deprecate': [ '1.0.2' ],
+94 silly audit   uuid: [ '8.3.2' ],
+94 silly audit   valibot: [ '1.3.1' ],
+94 silly audit   vfile: [ '6.0.3' ],
+94 silly audit   'vfile-message': [ '4.0.3' ],
+94 silly audit   vite: [ '7.3.1' ],
+94 silly audit   'vite-imagetools': [ '9.0.3' ],
+94 silly audit   'vite-tsconfig-paths': [ '4.3.2' ],
+94 silly audit   which: [ '2.0.2' ],
+94 silly audit   'which-boxed-primitive': [ '1.1.1' ],
+94 silly audit   'which-builtin-type': [ '1.2.1' ],
+94 silly audit   'which-collection': [ '1.0.2' ],
+94 silly audit   'which-typed-array': [ '1.1.20' ],
+94 silly audit   'word-wrap': [ '1.2.5' ],
+94 silly audit   wrappy: [ '1.0.2' ],
+94 silly audit   yauzl: [ '2.10.0' ],
+94 silly audit   'yocto-queue': [ '0.1.0' ],
+94 silly audit   zod: [ '3.25.48' ],
+94 silly audit   zwitch: [ '2.0.4' ],
+94 silly audit   autoprefixer: [ '10.5.0' ],
+94 silly audit   postcss: [ '8.5.10' ],
+94 silly audit   tailwindcss: [ '4.2.2' ],
+94 silly audit   browserslist: [ '4.28.2' ],
+94 silly audit   'caniuse-lite': [ '1.0.30001788' ],
+94 silly audit   'fraction.js': [ '5.3.4' ],
+94 silly audit   'baseline-browser-mapping': [ '2.10.20' ],
+94 silly audit   'electron-to-chromium': [ '1.5.340' ],
+94 silly audit   'node-releases': [ '2.0.37' ],
+94 silly audit   'update-browserslist-db': [ '1.2.3' ],
+94 silly audit   escalade: [ '3.2.0' ]
+94 silly audit }
+95 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/fsevents
+96 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/fsevents' ]
+97 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-win32-x64-msvc
+98 silly reify mark deleted [
+98 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-win32-x64-msvc'
+98 silly reify ]
+99 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-win32-x64-gnu
+100 silly reify mark deleted [
+100 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-win32-x64-gnu'
+100 silly reify ]
+101 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-win32-ia32-msvc
+102 silly reify mark deleted [
+102 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-win32-ia32-msvc'
+102 silly reify ]
+103 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-win32-arm64-msvc
+104 silly reify mark deleted [
+104 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-win32-arm64-msvc'
+104 silly reify ]
+105 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-openharmony-arm64
+106 silly reify mark deleted [
+106 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-openharmony-arm64'
+106 silly reify ]
+107 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-openbsd-x64
+108 silly reify mark deleted [
+108 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-openbsd-x64'
+108 silly reify ]
+109 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-s390x-gnu
+110 silly reify mark deleted [
+110 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-s390x-gnu'
+110 silly reify ]
+111 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-riscv64-musl
+112 silly reify mark deleted [
+112 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-riscv64-musl'
+112 silly reify ]
+113 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-riscv64-gnu
+114 silly reify mark deleted [
+114 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-riscv64-gnu'
+114 silly reify ]
+115 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-ppc64-musl
+116 silly reify mark deleted [
+116 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-ppc64-musl'
+116 silly reify ]
+117 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-ppc64-gnu
+118 silly reify mark deleted [
+118 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-ppc64-gnu'
+118 silly reify ]
+119 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-loong64-musl
+120 silly reify mark deleted [
+120 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-loong64-musl'
+120 silly reify ]
+121 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-loong64-gnu
+122 silly reify mark deleted [
+122 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-loong64-gnu'
+122 silly reify ]
+123 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-arm64-musl
+124 silly reify mark deleted [
+124 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-arm64-musl'
+124 silly reify ]
+125 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-arm64-gnu
+126 silly reify mark deleted [
+126 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-arm64-gnu'
+126 silly reify ]
+127 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-arm-musleabihf
+128 silly reify mark deleted [
+128 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-arm-musleabihf'
+128 silly reify ]
+129 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-arm-gnueabihf
+130 silly reify mark deleted [
+130 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-linux-arm-gnueabihf'
+130 silly reify ]
+131 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-freebsd-x64
+132 silly reify mark deleted [
+132 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-freebsd-x64'
+132 silly reify ]
+133 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-freebsd-arm64
+134 silly reify mark deleted [
+134 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-freebsd-arm64'
+134 silly reify ]
+135 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-darwin-x64
+136 silly reify mark deleted [
+136 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-darwin-x64'
+136 silly reify ]
+137 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-darwin-arm64
+138 silly reify mark deleted [
+138 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-darwin-arm64'
+138 silly reify ]
+139 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-android-arm64
+140 silly reify mark deleted [
+140 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-android-arm64'
+140 silly reify ]
+141 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-android-arm-eabi
+142 silly reify mark deleted [
+142 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@rollup/rollup-android-arm-eabi'
+142 silly reify ]
+143 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-win32-x64
+144 silly reify mark deleted [
+144 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-win32-x64'
+144 silly reify ]
+145 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-win32-ia32
+146 silly reify mark deleted [
+146 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-win32-ia32'
+146 silly reify ]
+147 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-win32-arm64
+148 silly reify mark deleted [
+148 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-win32-arm64'
+148 silly reify ]
+149 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-linux-arm64-musl
+150 silly reify mark deleted [
+150 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-linux-arm64-musl'
+150 silly reify ]
+151 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-linux-arm64-glibc
+152 silly reify mark deleted [
+152 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-linux-arm64-glibc'
+152 silly reify ]
+153 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-linux-arm-musl
+154 silly reify mark deleted [
+154 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-linux-arm-musl'
+154 silly reify ]
+155 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-linux-arm-glibc
+156 silly reify mark deleted [
+156 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-linux-arm-glibc'
+156 silly reify ]
+157 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-freebsd-x64
+158 silly reify mark deleted [
+158 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-freebsd-x64'
+158 silly reify ]
+159 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-darwin-x64
+160 silly reify mark deleted [
+160 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-darwin-x64'
+160 silly reify ]
+161 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-darwin-arm64
+162 silly reify mark deleted [
+162 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-darwin-arm64'
+162 silly reify ]
+163 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-android-arm64
+164 silly reify mark deleted [
+164 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@parcel/watcher-android-arm64'
+164 silly reify ]
+165 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-win32-x64
+166 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-win32-x64' ]
+167 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-win32-ia32
+168 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-win32-ia32' ]
+169 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-win32-arm64
+170 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-win32-arm64' ]
+171 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-wasm32
+172 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-wasm32' ]
+173 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@emnapi/runtime
+174 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@emnapi/runtime' ]
+175 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/tslib
+176 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/tslib' ]
+177 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-linuxmusl-arm64
+178 silly reify mark deleted [
+178 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-linuxmusl-arm64'
+178 silly reify ]
+179 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-linux-s390x
+180 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-linux-s390x' ]
+181 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-linux-riscv64
+182 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-linux-riscv64' ]
+183 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-linux-ppc64
+184 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-linux-ppc64' ]
+185 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-linux-arm64
+186 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-linux-arm64' ]
+187 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-linux-arm
+188 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-linux-arm' ]
+189 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linuxmusl-arm64
+190 silly reify mark deleted [
+190 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linuxmusl-arm64'
+190 silly reify ]
+191 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linux-s390x
+192 silly reify mark deleted [
+192 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linux-s390x'
+192 silly reify ]
+193 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linux-riscv64
+194 silly reify mark deleted [
+194 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linux-riscv64'
+194 silly reify ]
+195 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linux-ppc64
+196 silly reify mark deleted [
+196 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linux-ppc64'
+196 silly reify ]
+197 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linux-arm64
+198 silly reify mark deleted [
+198 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linux-arm64'
+198 silly reify ]
+199 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linux-arm
+200 silly reify mark deleted [
+200 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-linux-arm'
+200 silly reify ]
+201 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-darwin-x64
+202 silly reify mark deleted [
+202 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-darwin-x64'
+202 silly reify ]
+203 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-darwin-arm64
+204 silly reify mark deleted [
+204 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-libvips-darwin-arm64'
+204 silly reify ]
+205 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-darwin-x64
+206 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-darwin-x64' ]
+207 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@img/sharp-darwin-arm64
+208 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@img/sharp-darwin-arm64' ]
+209 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/win32-x64
+210 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/win32-x64' ]
+211 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/win32-ia32
+212 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/win32-ia32' ]
+213 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/win32-arm64
+214 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/win32-arm64' ]
+215 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/sunos-x64
+216 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/sunos-x64' ]
+217 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/openharmony-arm64
+218 silly reify mark deleted [
+218 silly reify   '/opt/hermes/simple-qwik-app/node_modules/@esbuild/openharmony-arm64'
+218 silly reify ]
+219 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/openbsd-x64
+220 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/openbsd-x64' ]
+221 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/openbsd-arm64
+222 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/openbsd-arm64' ]
+223 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/netbsd-x64
+224 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/netbsd-x64' ]
+225 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/netbsd-arm64
+226 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/netbsd-arm64' ]
+227 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-s390x
+228 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-s390x' ]
+229 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-riscv64
+230 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-riscv64' ]
+231 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-ppc64
+232 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-ppc64' ]
+233 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-mips64el
+234 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-mips64el' ]
+235 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-loong64
+236 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-loong64' ]
+237 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-ia32
+238 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-ia32' ]
+239 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-arm64
+240 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-arm64' ]
+241 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-arm
+242 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/linux-arm' ]
+243 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/freebsd-x64
+244 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/freebsd-x64' ]
+245 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/freebsd-arm64
+246 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/freebsd-arm64' ]
+247 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/darwin-x64
+248 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/darwin-x64' ]
+249 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/darwin-arm64
+250 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/darwin-arm64' ]
+251 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/android-x64
+252 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/android-x64' ]
+253 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/android-arm64
+254 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/android-arm64' ]
+255 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/android-arm
+256 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/android-arm' ]
+257 verbose reify failed optional dependency /opt/hermes/simple-qwik-app/node_modules/@esbuild/aix-ppc64
+258 silly reify mark deleted [ '/opt/hermes/simple-qwik-app/node_modules/@esbuild/aix-ppc64' ]
+259 timing reifyNode:node_modules/fsevents Completed in 68ms
+260 timing reifyNode:node_modules/@rollup/rollup-win32-x64-msvc Completed in 67ms
+261 timing reifyNode:node_modules/@rollup/rollup-win32-x64-gnu Completed in 67ms
+262 timing reifyNode:node_modules/@rollup/rollup-win32-ia32-msvc Completed in 67ms
+263 timing reifyNode:node_modules/@rollup/rollup-win32-arm64-msvc Completed in 67ms
+264 timing reifyNode:node_modules/@rollup/rollup-openharmony-arm64 Completed in 67ms
+265 timing reifyNode:node_modules/@rollup/rollup-openbsd-x64 Completed in 67ms
+266 timing reifyNode:node_modules/@rollup/rollup-linux-s390x-gnu Completed in 68ms
+267 timing reifyNode:node_modules/@rollup/rollup-linux-riscv64-musl Completed in 68ms
+268 timing reifyNode:node_modules/@rollup/rollup-linux-riscv64-gnu Completed in 68ms
+269 timing reifyNode:node_modules/@rollup/rollup-linux-ppc64-musl Completed in 68ms
+270 timing reifyNode:node_modules/@rollup/rollup-linux-ppc64-gnu Completed in 69ms
+271 timing reifyNode:node_modules/@rollup/rollup-linux-loong64-musl Completed in 68ms
+272 timing reifyNode:node_modules/@rollup/rollup-linux-loong64-gnu Completed in 68ms
+273 timing reifyNode:node_modules/@rollup/rollup-linux-arm64-musl Completed in 68ms
+274 timing reifyNode:node_modules/@rollup/rollup-linux-arm64-gnu Completed in 68ms
+275 timing reifyNode:node_modules/@rollup/rollup-linux-arm-musleabihf Completed in 69ms
+276 timing reifyNode:node_modules/@rollup/rollup-linux-arm-gnueabihf Completed in 69ms
+277 timing reifyNode:node_modules/@rollup/rollup-freebsd-x64 Completed in 69ms
+278 timing reifyNode:node_modules/@rollup/rollup-freebsd-arm64 Completed in 69ms
+279 timing reifyNode:node_modules/@rollup/rollup-darwin-x64 Completed in 69ms
+280 timing reifyNode:node_modules/@rollup/rollup-darwin-arm64 Completed in 70ms
+281 timing reifyNode:node_modules/@rollup/rollup-android-arm64 Completed in 70ms
+282 timing reifyNode:node_modules/@rollup/rollup-android-arm-eabi Completed in 70ms
+283 timing reifyNode:node_modules/@parcel/watcher-win32-x64 Completed in 67ms
+284 timing reifyNode:node_modules/@parcel/watcher-win32-ia32 Completed in 67ms
+285 timing reifyNode:node_modules/@parcel/watcher-win32-arm64 Completed in 67ms
+286 timing reifyNode:node_modules/@parcel/watcher-linux-arm64-musl Completed in 67ms
+287 timing reifyNode:node_modules/@parcel/watcher-linux-arm64-glibc Completed in 67ms
+288 timing reifyNode:node_modules/@parcel/watcher-linux-arm-musl Completed in 68ms
+289 timing reifyNode:node_modules/@parcel/watcher-linux-arm-glibc Completed in 68ms
+290 timing reifyNode:node_modules/@parcel/watcher-freebsd-x64 Completed in 68ms
+291 timing reifyNode:node_modules/@parcel/watcher-darwin-x64 Completed in 67ms
+292 timing reifyNode:node_modules/@parcel/watcher-darwin-arm64 Completed in 67ms
+293 timing reifyNode:node_modules/@parcel/watcher-android-arm64 Completed in 67ms
+294 timing reifyNode:node_modules/@img/sharp-win32-x64 Completed in 67ms
+295 timing reifyNode:node_modules/@img/sharp-win32-ia32 Completed in 67ms
+296 timing reifyNode:node_modules/@img/sharp-win32-arm64 Completed in 67ms
+297 timing reifyNode:node_modules/@img/sharp-wasm32 Completed in 67ms
+298 timing reifyNode:node_modules/@img/sharp-linuxmusl-arm64 Completed in 67ms
+299 timing reifyNode:node_modules/@img/sharp-linux-s390x Completed in 67ms
+300 timing reifyNode:node_modules/@img/sharp-linux-riscv64 Completed in 67ms
+301 timing reifyNode:node_modules/@img/sharp-linux-ppc64 Completed in 68ms
+302 timing reifyNode:node_modules/@img/sharp-linux-arm64 Completed in 68ms
+303 timing reifyNode:node_modules/@img/sharp-linux-arm Completed in 68ms
+304 timing reifyNode:node_modules/@img/sharp-libvips-linuxmusl-arm64 Completed in 68ms
+305 timing reifyNode:node_modules/@img/sharp-libvips-linux-s390x Completed in 67ms
+306 timing reifyNode:node_modules/@img/sharp-libvips-linux-riscv64 Completed in 67ms
+307 timing reifyNode:node_modules/@img/sharp-libvips-linux-ppc64 Completed in 67ms
+308 timing reifyNode:node_modules/@img/sharp-libvips-linux-arm64 Completed in 68ms
+309 timing reifyNode:node_modules/@img/sharp-libvips-linux-arm Completed in 68ms
+310 timing reifyNode:node_modules/@img/sharp-libvips-darwin-x64 Completed in 68ms
+311 timing reifyNode:node_modules/@img/sharp-libvips-darwin-arm64 Completed in 68ms
+312 timing reifyNode:node_modules/@img/sharp-darwin-x64 Completed in 68ms
+313 timing reifyNode:node_modules/@img/sharp-darwin-arm64 Completed in 68ms
+314 timing reifyNode:node_modules/@esbuild/win32-x64 Completed in 68ms
+315 timing reifyNode:node_modules/@esbuild/win32-ia32 Completed in 68ms
+316 timing reifyNode:node_modules/@esbuild/win32-arm64 Completed in 69ms
+317 timing reifyNode:node_modules/@esbuild/sunos-x64 Completed in 69ms
+318 timing reifyNode:node_modules/@esbuild/openharmony-arm64 Completed in 69ms
+319 timing reifyNode:node_modules/@esbuild/openbsd-x64 Completed in 69ms
+320 timing reifyNode:node_modules/@esbuild/openbsd-arm64 Completed in 69ms
+321 timing reifyNode:node_modules/@esbuild/netbsd-x64 Completed in 69ms
+322 timing reifyNode:node_modules/@esbuild/netbsd-arm64 Completed in 68ms
+323 timing reifyNode:node_modules/@esbuild/linux-s390x Completed in 68ms
+324 timing reifyNode:node_modules/@esbuild/linux-riscv64 Completed in 68ms
+325 timing reifyNode:node_modules/@esbuild/linux-ppc64 Completed in 68ms
+326 timing reifyNode:node_modules/@esbuild/linux-mips64el Completed in 68ms
+327 timing reifyNode:node_modules/@esbuild/linux-loong64 Completed in 68ms
+328 timing reifyNode:node_modules/@esbuild/linux-ia32 Completed in 68ms
+329 timing reifyNode:node_modules/@esbuild/linux-arm64 Completed in 69ms
+330 timing reifyNode:node_modules/@esbuild/linux-arm Completed in 69ms
+331 timing reifyNode:node_modules/@esbuild/freebsd-x64 Completed in 69ms
+332 timing reifyNode:node_modules/@esbuild/freebsd-arm64 Completed in 69ms
+333 timing reifyNode:node_modules/@esbuild/darwin-x64 Completed in 68ms
+334 timing reifyNode:node_modules/@esbuild/darwin-arm64 Completed in 68ms
+335 timing reifyNode:node_modules/@esbuild/android-x64 Completed in 68ms
+336 timing reifyNode:node_modules/@esbuild/android-arm64 Completed in 68ms
+337 timing reifyNode:node_modules/@esbuild/android-arm Completed in 68ms
+338 timing reifyNode:node_modules/@esbuild/aix-ppc64 Completed in 68ms
+339 silly tarball no local data for update-browserslist-db@https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.2.3.tgz. Extracting by manifest.
+340 silly tarball no local data for baseline-browser-mapping@https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.10.20.tgz. Extracting by manifest.
+341 silly tarball no local data for node-releases@https://registry.npmjs.org/node-releases/-/node-releases-2.0.37.tgz. Extracting by manifest.
+342 silly tarball no local data for fraction.js@https://registry.npmjs.org/fraction.js/-/fraction.js-5.3.4.tgz. Extracting by manifest.
+343 silly tarball no local data for caniuse-lite@https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001788.tgz. Extracting by manifest.
+344 silly tarball no local data for tailwindcss@https://registry.npmjs.org/tailwindcss/-/tailwindcss-4.2.2.tgz. Extracting by manifest.
+345 silly tarball no local data for autoprefixer@https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.5.0.tgz. Extracting by manifest.
+346 silly tarball no local data for electron-to-chromium@https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.340.tgz. Extracting by manifest.
+347 silly tarball no local data for browserslist@https://registry.npmjs.org/browserslist/-/browserslist-4.28.2.tgz. Extracting by manifest.
+348 silly tarball no local data for escalade@https://registry.npmjs.org/escalade/-/escalade-3.2.0.tgz. Extracting by manifest.
+349 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 317ms
+350 timing auditReport:getReport Completed in 339ms
+351 silly audit report {
+351 silly audit report   undici: [
+351 silly audit report     {
+351 silly audit report       id: 1101610,
+351 silly audit report       url: 'https://github.com/advisories/GHSA-c76h-2ccp-4975',
+351 silly audit report       title: 'Use of Insufficiently Random Values in undici',
+351 silly audit report       severity: 'moderate',
+351 silly audit report       vulnerable_versions: '>=4.5.0 <5.28.5',
+351 silly audit report       cwe: [Array],
+351 silly audit report       cvss: [Object]
+351 silly audit report     },
+351 silly audit report     {
+351 silly audit report       id: 1112496,
+351 silly audit report       url: 'https://github.com/advisories/GHSA-g9mf-h72j-4rw9',
+351 silly audit report       title: 'Undici has an unbounded decompression chain in HTTP responses on Node.js Fetch API via Content-Encoding leads to resource exhaustion',
+351 silly audit report       severity: 'moderate',
+351 silly audit report       vulnerable_versions: '<6.23.0',
+351 silly audit report       cwe: [Array],
+351 silly audit report       cvss: [Object]
+351 silly audit report     },
+351 silly audit report     {
+351 silly audit report       id: 1113069,
+351 silly audit report       url: 'https://github.com/advisories/GHSA-cxrh-j4jr-qwg3',
+351 silly audit report       title: 'undici Denial of Service attack via bad certificate data',
+351 silly audit report       severity: 'low',
+351 silly audit report       vulnerable_versions: '<5.29.0',
+351 silly audit report       cwe: [Array],
+351 silly audit report       cvss: [Object]
+351 silly audit report     },
+351 silly audit report     {
+351 silly audit report       id: 1114594,
+351 silly audit report       url: 'https://github.com/advisories/GHSA-2mjp-6q6p-2qxm',
+351 silly audit report       title: 'Undici has an HTTP Request/Response Smuggling issue',
+351 silly audit report       severity: 'moderate',
+351 silly audit report       vulnerable_versions: '<6.24.0',
+351 silly audit report       cwe: [Array],
+351 silly audit report       cvss: [Object]
+351 silly audit report     },
+351 silly audit report     {
+351 silly audit report       id: 1114638,
+351 silly audit report       url: 'https://github.com/advisories/GHSA-vrm6-8vpv-qv8q',
+351 silly audit report       title: 'Undici has Unbounded Memory Consumption in WebSocket permessage-deflate Decompression',
+351 silly audit report       severity: 'high',
+351 silly audit report       vulnerable_versions: '<6.24.0',
+351 silly audit report       cwe: [Array],
+351 silly audit report       cvss: [Object]
+351 silly audit report     },
+351 silly audit report     {
+351 silly audit report       id: 1114640,
+351 silly audit report       url: 'https://github.com/advisories/GHSA-v9p9-hfj2-hcw8',
+351 silly audit report       title: 'Undici has Unhandled Exception in WebSocket Client Due to Invalid server_max_window_bits Validation',
+351 silly audit report       severity: 'high',
+351 silly audit report       vulnerable_versions: '<6.24.0',
+351 silly audit report       cwe: [Array],
+351 silly audit report       cvss: [Object]
+351 silly audit report     },
+351 silly audit report     {
+351 silly audit report       id: 1114642,
+351 silly audit report       url: 'https://github.com/advisories/GHSA-4992-7rv2-5pvq',
+351 silly audit report       title: 'Undici has CRLF Injection in undici via `upgrade` option',
+351 silly audit report       severity: 'moderate',
+351 silly audit report       vulnerable_versions: '<6.24.0',
+351 silly audit report       cwe: [Array],
+351 silly audit report       cvss: [Object]
+351 silly audit report     }
+351 silly audit report   ],
+351 silly audit report   vite: [
+351 silly audit report     {
+351 silly audit report       id: 1116230,
+351 silly audit report       url: 'https://github.com/advisories/GHSA-4w7w-66w2-5vf9',
+351 silly audit report       title: 'Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling',
+351 silly audit report       severity: 'moderate',
+351 silly audit report       vulnerable_versions: '>=7.0.0 <=7.3.1',
+351 silly audit report       cwe: [Array],
+351 silly audit report       cvss: [Object]
+351 silly audit report     },
+351 silly audit report     {
+351 silly audit report       id: 1116232,
+351 silly audit report       url: 'https://github.com/advisories/GHSA-v2wj-q39q-566r',
+351 silly audit report       title: 'Vite: `server.fs.deny` bypassed with queries',
+351 silly audit report       severity: 'high',
+351 silly audit report       vulnerable_versions: '>=7.1.0 <=7.3.1',
+351 silly audit report       cwe: [Array],
+351 silly audit report       cvss: [Object]
+351 silly audit report     },
+351 silly audit report     {
+351 silly audit report       id: 1116235,
+351 silly audit report       url: 'https://github.com/advisories/GHSA-p9ff-h696-f583',
+351 silly audit report       title: 'Vite Vulnerable to Arbitrary File Read via Vite Dev Server WebSocket',
+351 silly audit report       severity: 'high',
+351 silly audit report       vulnerable_versions: '>=7.0.0 <=7.3.1',
+351 silly audit report       cwe: [Array],
+351 silly audit report       cvss: [Object]
+351 silly audit report     }
+351 silly audit report   ]
+351 silly audit report }
+352 http fetch GET 200 https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.2.3.tgz 311ms (cache miss)
+353 http fetch GET 200 https://registry.npmjs.org/node-releases/-/node-releases-2.0.37.tgz 315ms (cache miss)
+354 timing reifyNode:node_modules/update-browserslist-db Completed in 436ms
+355 timing metavuln:cache:get:security-advisory:undici:C95pXYvPtLw+lt2tMAK2ZwI4cRE9zPAiAhuYhLTSBlt8zW7E6i7+1/t4Dr2HIHPtN20zKskQfrXNb2aJ1cd2aw== Completed in 114ms
+356 timing metavuln:cache:get:security-advisory:undici:b3oQ3g+hj5SMgnSURhB4kIqOkHt2IsYm2a0haI1yHGuf1J25TaGtftXhEW1qa2Mh6Sh8mU/Zkap9kW71veIGgQ== Completed in 118ms
+357 timing metavuln:cache:get:security-advisory:undici:0qrEC5u79wvaP2Gmo/9yw94XveSTFxdKaNrDWBjvjOS8o0Q8K+spDEmI1pdmvaj+ymc+emfXUM8HbqtBcHKfBw== Completed in 116ms
+358 timing metavuln:cache:get:security-advisory:undici:1/WUXNn7xp8QIxaZBTaUcktiVwkOnmSvwgfb1Rj47N3I6JV0b/fBGrXtK2IlcAMucd6B6lEd6IwB6aXkLT4iiQ== Completed in 117ms
+359 timing metavuln:cache:get:security-advisory:undici:nff069lyoAS01AkUxVLcuUFa1E2TkblEu92M6KEf0cwRulH5yOyww8K6p/a/Vl4yVTKHmz/mMmhCbLKSHB2OEA== Completed in 118ms
+360 timing metavuln:cache:get:security-advisory:vite:KfZn8yxFghRSACYGvtoE5dS+n7MZ6IoDfxWttMT44/PEQln6urGt1L12TRUqdcGj/tg3v/t/GlXIj0Yl4wYTaQ== Completed in 120ms
+361 timing metavuln:cache:get:security-advisory:vite:YKy4GOwNBzYPcn5Xa2ttFRubdc68zM0lpbEYfRzqKP4QtBRYJH9u3PgqUhIzxkCEAaL9OtJYNzj89wT4miRA2A== Completed in 119ms
+362 timing metavuln:cache:get:security-advisory:undici:O5nryYY+vdCnsOyx+t6CGBNa9/eilVLy3OgHgltD32RLanE2XCJuqOsmvrKeWKSkpvP517nC5+VCbcKJtlG/5A== Completed in 121ms
+363 timing reifyNode:node_modules/node-releases Completed in 447ms
+364 timing metavuln:cache:get:security-advisory:undici:hRagIU2z3Dww7TjQZesFJH0iRCwPzbhbtsLTKcdmeEBVqULQQcBfsIlTc1fcVKr3Zu7fjcxZ4DhnOtJmRI5Kww== Completed in 123ms
+365 timing metavuln:cache:get:security-advisory:vite:SCO1RRwPelWhJ/uWmFc7/ylctclEgPPJUhE0gRdbA8vEo5CpmXWDHQld5vZGRMty/O49XuvkGICdtbOr7Bggsg== Completed in 124ms
+366 http fetch GET 200 https://registry.npmjs.org/escalade/-/escalade-3.2.0.tgz 333ms (cache miss)
+367 timing reifyNode:node_modules/escalade Completed in 486ms
+368 timing reifyNode:node_modules/tslib Completed in 487ms
+369 http fetch GET 200 https://registry.npmjs.org/browserslist/-/browserslist-4.28.2.tgz 377ms (cache miss)
+370 timing reifyNode:node_modules/browserslist Completed in 522ms
+371 http fetch GET 200 https://registry.npmjs.org/undici 205ms (cache revalidated)
+372 timing metavuln:packument:undici Completed in 214ms
+373 timing metavuln:load:security-advisory:undici:1101610 Completed in 3ms
+374 timing metavuln:calculate:security-advisory:undici:1101610 Completed in 218ms
+375 timing metavuln:load:security-advisory:undici:1112496 Completed in 3ms
+376 timing metavuln:calculate:security-advisory:undici:1112496 Completed in 218ms
+377 timing metavuln:load:security-advisory:undici:1113069 Completed in 3ms
+378 timing metavuln:calculate:security-advisory:undici:1113069 Completed in 221ms
+379 timing metavuln:load:security-advisory:undici:1114594 Completed in 4ms
+380 timing metavuln:calculate:security-advisory:undici:1114594 Completed in 225ms
+381 timing metavuln:load:security-advisory:undici:1114638 Completed in 3ms
+382 timing metavuln:calculate:security-advisory:undici:1114638 Completed in 228ms
+383 timing metavuln:load:security-advisory:undici:1114640 Completed in 11ms
+384 timing metavuln:calculate:security-advisory:undici:1114640 Completed in 239ms
+385 timing metavuln:load:security-advisory:undici:1114642 Completed in 4ms
+386 timing metavuln:calculate:security-advisory:undici:1114642 Completed in 242ms
+387 http fetch GET 200 https://registry.npmjs.org/vite 255ms (cache revalidated)
+388 timing metavuln:packument:vite Completed in 298ms
+389 timing metavuln:load:security-advisory:vite:1116230 Completed in 6ms
+390 timing metavuln:calculate:security-advisory:vite:1116230 Completed in 304ms
+391 timing metavuln:load:security-advisory:vite:1116232 Completed in 5ms
+392 timing metavuln:calculate:security-advisory:vite:1116232 Completed in 308ms
+393 timing metavuln:load:security-advisory:vite:1116235 Completed in 5ms
+394 timing metavuln:calculate:security-advisory:vite:1116235 Completed in 313ms
+395 http fetch GET 200 https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.10.20.tgz 553ms (cache miss)
+396 timing reifyNode:node_modules/baseline-browser-mapping Completed in 662ms
+397 http fetch GET 200 https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.340.tgz 562ms (cache miss)
+398 timing reifyNode:node_modules/electron-to-chromium Completed in 696ms
+399 timing reifyNode:node_modules/@emnapi/runtime Completed in 689ms
+400 timing metavuln:cache:get:security-advisory:@builder.io/qwik-city:zboiqURg8qzo/TMb7C6xQrRZaDi77maGvNcWjBpVFYSo7Fad2mr7k09Jo4XJwVodQK/rX5+SGsqY+/fKxzDXuw== Completed in 61ms
+401 http fetch GET 200 https://registry.npmjs.org/fraction.js/-/fraction.js-5.3.4.tgz 619ms (cache miss)
+402 timing reifyNode:node_modules/fraction.js Completed in 740ms
+403 http fetch GET 200 https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.5.0.tgz 871ms (cache miss)
+404 timing reifyNode:node_modules/autoprefixer Completed in 1012ms
+405 http fetch GET 200 https://registry.npmjs.org/tailwindcss/-/tailwindcss-4.2.2.tgz 890ms (cache miss)
+406 timing reifyNode:node_modules/tailwindcss Completed in 1036ms
+407 http fetch GET 200 https://registry.npmjs.org/@builder.io%2fqwik-city 432ms (cache revalidated)
+408 timing metavuln:packument:@builder.io/qwik-city Completed in 436ms
+409 timing metavuln:load:security-advisory:@builder.io/qwik-city:b3oQ3g+hj5SMgnSURhB4kIqOkHt2IsYm2a0haI1yHGuf1J25TaGtftXhEW1qa2Mh6Sh8mU/Zkap9kW71veIGgQ== Completed in 1ms
+410 timing metavuln:calculate:security-advisory:@builder.io/qwik-city:b3oQ3g+hj5SMgnSURhB4kIqOkHt2IsYm2a0haI1yHGuf1J25TaGtftXhEW1qa2Mh6Sh8mU/Zkap9kW71veIGgQ== Completed in 438ms
+411 timing metavuln:cache:get:security-advisory:@builder.io/qwik-city:3TinLrvU30AuTIFKWrZsR5l7QQmyHaQfafp6j8xnJJRCuqq/VwnFc0jBg+pgazEEdGHfYWF5pEB7adGMroWg2w== Completed in 33ms
+412 timing metavuln:load:security-advisory:@builder.io/qwik-city:KfZn8yxFghRSACYGvtoE5dS+n7MZ6IoDfxWttMT44/PEQln6urGt1L12TRUqdcGj/tg3v/t/GlXIj0Yl4wYTaQ== Completed in 1ms
+413 timing metavuln:calculate:security-advisory:@builder.io/qwik-city:KfZn8yxFghRSACYGvtoE5dS+n7MZ6IoDfxWttMT44/PEQln6urGt1L12TRUqdcGj/tg3v/t/GlXIj0Yl4wYTaQ== Completed in 35ms
+414 timing metavuln:cache:get:security-advisory:vite-tsconfig-paths:98raDu6S9CSY+WnYG0a3ixPD7rCtBzYjFySqlTT3J9sfWtV0XI+UqoW1vQp9wlEIr+rfoDkb89kW4jThhTMGJQ== Completed in 50ms
+415 timing metavuln:cache:get:security-advisory:@builder.io/qwik:AokBXCCOgBXSl6/Ahg2ZG6P7Og1jnYu2nfMox5h8LSon6PiEy5+BZ98jmVh0cU6zRufbsnSUeowAJrzkHnEb9A== Completed in 54ms
+416 http fetch GET 200 https://registry.npmjs.org/vite-tsconfig-paths 93ms (cache revalidated)
+417 timing metavuln:packument:vite-tsconfig-paths Completed in 96ms
+418 timing metavuln:load:security-advisory:vite-tsconfig-paths:KfZn8yxFghRSACYGvtoE5dS+n7MZ6IoDfxWttMT44/PEQln6urGt1L12TRUqdcGj/tg3v/t/GlXIj0Yl4wYTaQ== Completed in 0ms
+419 timing metavuln:calculate:security-advisory:vite-tsconfig-paths:KfZn8yxFghRSACYGvtoE5dS+n7MZ6IoDfxWttMT44/PEQln6urGt1L12TRUqdcGj/tg3v/t/GlXIj0Yl4wYTaQ== Completed in 96ms
+420 http fetch GET 200 https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001788.tgz 1575ms (cache miss)
+421 timing reifyNode:node_modules/caniuse-lite Completed in 1698ms
+422 timing reify:unpack Completed in 1699ms
+423 timing reify:unretire Completed in 1ms
+424 timing build:queue Completed in 9ms
+425 timing build:link:node_modules/autoprefixer Completed in 6ms
+426 timing build:link:node_modules/baseline-browser-mapping Completed in 5ms
+427 timing build:link:node_modules/browserslist Completed in 5ms
+428 timing build:link:node_modules/update-browserslist-db Completed in 6ms
+429 timing build:link Completed in 7ms
+430 timing build:deps Completed in 17ms
+431 timing build Completed in 18ms
+432 timing reify:build Completed in 19ms
+433 timing reify:trash Completed in 14ms
+434 timing reify:save Completed in 449ms
+435 http fetch GET 200 https://registry.npmjs.org/@builder.io%2fqwik 1351ms (cache revalidated)
+436 timing metavuln:packument:@builder.io/qwik Completed in 1356ms
+437 timing metavuln:load:security-advisory:@builder.io/qwik:KfZn8yxFghRSACYGvtoE5dS+n7MZ6IoDfxWttMT44/PEQln6urGt1L12TRUqdcGj/tg3v/t/GlXIj0Yl4wYTaQ== Completed in 3ms
+438 timing metavuln:calculate:security-advisory:@builder.io/qwik:KfZn8yxFghRSACYGvtoE5dS+n7MZ6IoDfxWttMT44/PEQln6urGt1L12TRUqdcGj/tg3v/t/GlXIj0Yl4wYTaQ== Completed in 1360ms
+439 timing auditReport:init Completed in 2122ms
+440 timing reify:audit Completed in 2464ms
+441 timing reify Completed in 5637ms
+442 silly ADD node_modules/escalade
+443 silly ADD node_modules/update-browserslist-db
+444 silly ADD node_modules/node-releases
+445 silly ADD node_modules/electron-to-chromium
+446 silly ADD node_modules/baseline-browser-mapping
+447 silly ADD node_modules/fraction.js
+448 silly ADD node_modules/caniuse-lite
+449 silly ADD node_modules/browserslist
+450 silly ADD node_modules/tailwindcss
+451 silly ADD node_modules/autoprefixer
+452 silly ADD
+453 silly ADD
+454 silly ADD
+455 silly ADD
+456 silly ADD
+457 silly ADD
+458 silly ADD
+459 silly ADD
+460 silly ADD
+461 silly ADD
+462 silly ADD
+463 silly ADD
+464 silly ADD
+465 silly ADD
+466 silly ADD
+467 silly ADD
+468 silly ADD
+469 silly ADD
+470 silly ADD
+471 silly ADD
+472 silly ADD
+473 silly ADD
+474 silly ADD
+475 silly ADD
+476 silly ADD
+477 silly ADD
+478 silly ADD
+479 silly ADD
+480 silly ADD
+481 silly ADD
+482 silly ADD
+483 silly ADD
+484 silly ADD
+485 silly ADD
+486 silly ADD
+487 silly ADD
+488 silly ADD
+489 silly ADD
+490 silly ADD
+491 silly ADD
+492 silly ADD
+493 silly ADD
+494 silly ADD
+495 silly ADD
+496 silly ADD
+497 silly ADD
+498 silly ADD
+499 silly ADD
+500 silly ADD
+501 silly ADD
+502 silly ADD
+503 silly ADD
+504 silly ADD
+505 silly ADD
+506 silly ADD
+507 silly ADD
+508 silly ADD
+509 silly ADD
+510 silly ADD
+511 silly ADD
+512 silly ADD
+513 silly ADD
+514 silly ADD
+515 silly ADD
+516 silly ADD
+517 silly ADD
+518 silly ADD
+519 silly ADD
+520 silly ADD
+521 silly ADD
+522 silly ADD
+523 silly ADD
+524 silly ADD
+525 silly ADD
+526 silly ADD
+527 silly ADD
+528 silly ADD
+529 silly ADD
+530 silly ADD
+531 silly ADD
+532 silly ADD
+533 silly ADD
+534 timing command:install Completed in 5691ms
+535 verbose exit 0
+536 timing npm Completed in 5876ms
+537 info ok
