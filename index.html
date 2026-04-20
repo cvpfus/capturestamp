@@ -406,8 +406,9 @@ async function initCamera() {
     stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
     video.srcObject = stream;
     await video.play();
-    captureBtn.disabled = false;
-    setStatus('Camera ready', 'ok');
+    captureBtn.disabled = !!(toggleLoc.checked && !address);
+    if (!toggleLoc.checked || address) setStatus('Camera & location ready', 'ok');
+    else setStatus('Acquiring location…', '');
   } catch (err) {
     console.error('[Camera]', err);
     setStatus('Camera access denied — check browser permissions', 'err');
@@ -460,6 +461,10 @@ function initGeo() {
         if (address) {
           addrBlock.style.display = 'flex';
           addrEl.textContent = address.replace(/\n/g, ' · ');
+          if (toggleLoc.checked) {
+            captureBtn.disabled = false;
+            setStatus('Camera & location ready', 'ok');
+          }
         }
         if (toggleLoc.checked) locEl.textContent = address ? address.split('\n')[0] : '—';
       }
@@ -606,9 +611,14 @@ toggleLoc.addEventListener('change', () => {
   if (toggleLoc.checked) {
     locEl.textContent = address ? address.split('\n')[0] : '—';
     addrBlock.style.display = address ? 'flex' : 'none';
+    captureBtn.disabled = !address;
+    if (address) setStatus('Camera & location ready', 'ok');
+    else setStatus('Acquiring location…', '');
   } else {
     locEl.textContent  = '—';
     addrBlock.style.display = 'none';
+    captureBtn.disabled = false;
+    setStatus('Camera ready', 'ok');
   }
 });
 toggleTime.addEventListener('change', () => {
