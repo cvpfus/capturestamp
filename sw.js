@@ -1,7 +1,7 @@
 const CACHE = 'capturestamp-v1';
 const STATIC_ASSETS = [
-  '/index.html',
-  '/manifest.json',
+  '/capturestamp/index.html',
+  '/capturestamp/manifest.json',
 ];
 
 // Install: cache static assets

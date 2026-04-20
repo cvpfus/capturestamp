@@ -2,7 +2,7 @@
   "name": "CaptureStamp",
   "short_name": "CaptureStamp",
   "description": "Webcam capture with live timestamp and geolocation",
-  "start_url": "/",
+  "start_url": "/capturestamp/",
   "display": "standalone",
   "background_color": "#141210",
   "theme_color": "#E09A3D",
