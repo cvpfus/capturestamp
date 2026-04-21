@@ -403,7 +403,10 @@ const installBtn = document.getElementById('installBtn');
 async function initCamera() {
   setStatus('Requesting camera access…', '');
   try {
-    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },
+      audio: false
+    });
     video.srcObject = stream;
     await video.play();
     captureBtn.disabled = !!(toggleLoc.checked && !address);
@@ -535,8 +538,8 @@ async function capture() {
   const now = new Date();
   const { date, time } = formatWIB(now);
   const ts = `${date.replace(/ /g,'-')}_${time.replace(/:/g,'-')}_WIB`;
-  const w  = video.videoWidth  || 640;
-  const h  = video.videoHeight || 480;
+  const w  = video.videoWidth  || 1280;
+  const h  = video.videoHeight || 720;
   const canvas = document.createElement('canvas');
   canvas.width  = w;
   canvas.height = h;
