@@ -535,17 +535,25 @@ installBtn.addEventListener('click', async () => {
 async function capture() {
   if (!stream) return;
 
+  const TARGET_W = 1280;
+  const TARGET_H = 720;
   const now = new Date();
   const { date, time } = formatWIB(now);
   const ts = `${date.replace(/ /g,'-')}_${time.replace(/:/g,'-')}_WIB`;
-  const w  = video.videoWidth  || 1280;
-  const h  = video.videoHeight || 720;
+  const srcW = video.videoWidth  || TARGET_W;
+  const srcH = video.videoHeight || TARGET_H;
   const canvas = document.createElement('canvas');
-  canvas.width  = w;
-  canvas.height = h;
+  canvas.width  = TARGET_W;
+  canvas.height = TARGET_H;
   const ctx = canvas.getContext('2d');
 
-  ctx.drawImage(video, 0, 0, w, h);
+  // Scale video frame to target resolution (cover fit, center crop)
+  const scale  = Math.max(TARGET_W / srcW, TARGET_H / srcH);
+  const scaledW = srcW * scale;
+  const scaledH = srcH * scale;
+  const sx = (scaledW - TARGET_W) / 2 / scale;
+  const sy = (scaledH - TARGET_H) / 2 / scale;
+  ctx.drawImage(video, sx, sy, srcW, srcH, 0, 0, TARGET_W, TARGET_H);
 
   const lines = [];
   if (toggleTime.checked) lines.push(`${date}  ${time} WIB`);
@@ -555,7 +563,7 @@ async function capture() {
   }
 
   if (lines.length > 0) {
-    const fontSize = Math.max(11, Math.floor(w / 72));
+    const fontSize = Math.max(11, Math.floor(TARGET_W / 72));
     const lineH    = fontSize * 1.5;
     const padX     = 14;
     const padY     = 10;
@@ -565,13 +573,13 @@ async function capture() {
     const maxLineW = Math.max(...lines.map((l) => ctx.measureText(l).width));
     const boxW     = maxLineW + padX * 2;
     const boxH     = lines.length * lineH + padY * 2;
-    const bx       = w - boxW - 14;
-    const by       = h - boxH - 14;
+    const bx       = TARGET_W - boxW - 14;
+    const by       = TARGET_H - boxH - 14;
 
     ctx.textBaseline = 'top';
     ctx.textAlign     = 'right';
     lines.forEach((line, i) => {
-      const tx = w - 14 - padX;
+      const tx = TARGET_W - 14 - padX;
       const ty = by + padY + i * lineH;
 
       ctx.font = `600 ${fontSize}px "Courier New", monospace`;
