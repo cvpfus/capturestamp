@@ -557,7 +557,7 @@ async function capture() {
     const padX     = 14;
     const padY     = 10;
 
-    ctx.font = `500 ${fontSize}px "IBM Plex Mono", monospace`;
+    ctx.font = `600 ${fontSize}px "Courier New", monospace`;
 
     const maxLineW = Math.max(...lines.map((l) => ctx.measureText(l).width));
     const boxW     = maxLineW + padX * 2;
@@ -571,13 +571,13 @@ async function capture() {
       const tx = w - 14 - padX;
       const ty = by + padY + i * lineH;
 
-      ctx.font = `500 ${fontSize}px "IBM Plex Mono", monospace`;
-      ctx.strokeStyle = 'rgba(0,0,0,0.8)';
-      ctx.lineWidth   = fontSize * 0.14;
+      ctx.font = `600 ${fontSize}px "Courier New", monospace`;
+      ctx.strokeStyle = 'rgba(0,0,0,0.75)';
+      ctx.lineWidth   = fontSize * 0.12;
       ctx.lineJoin    = 'round';
       ctx.strokeText(line, tx, ty);
 
-      ctx.fillStyle = 'rgba(245,230,211,0.97)';
+      ctx.fillStyle = '#ffffff';
       ctx.fillText(line, tx, ty);
     });
   }
