@@ -595,7 +595,7 @@ async function capture() {
 
   canvas.toBlob((blob) => {
     if (!blob) return;
-    const filename = `capturestamp_${ts}.png`;
+    const filename = `capturestamp_${ts}.jpg`;
     const blobUrl  = URL.createObjectURL(blob);
     const a        = document.createElement('a');
     a.href     = blobUrl;
@@ -607,7 +607,7 @@ async function capture() {
 
     captureCount++;
     setStatus(`Capture #${captureCount} saved`, 'ok');
-  }, 'image/png');
+  }, 'image/jpeg', 0.88);
 }
 
 // ─── Status helper ─────────────────────────────────────────────
