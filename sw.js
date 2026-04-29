@@ -1,4 +1,4 @@
-const CACHE = 'capturestamp-v1';
+const CACHE = 'capturestamp-v2';
 const STATIC_ASSETS = [
   '/capturestamp/index.html',
   '/capturestamp/manifest.json',
